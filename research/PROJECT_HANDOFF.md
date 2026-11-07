@@ -155,3 +155,20 @@ This direct official booking-form search supersedes the earlier note that treate
 For four travelers, only the displayed five-seat classes are viable for seating; the Polo manual €39.95 is the lowest shown 5-seat manual class. The form labels prices as totals/€/day and shows IGIC, full-risk insurance, unlimited mileage, free extra driver and free change/cancellation as included; fuel is same-level. The reserved model is not guaranteed (similar class), trunk volume was not specified, deposit/card hold was not shown, and coverage exclusions remain (including tires/wheels, underbody, roof, interior and clutch). The search reached the vehicle-results page only; no car was selected and no booking/payment was made.
 
 The pickup dropdown listed Fuerteventura Airport, Esmeralda and Prin Fuerte; it did not offer the cruise port. PlusCar's general Fuerteventura page advertises port delivery, but the direct form did not price or confirm that handover. Treat €39.95 as an exact-date, correct-age **airport** quote and port delivery as unresolved. A 10-hour booking returned the displayed one-day rate, so no shorter cruise-hour price was demonstrated. Source: [official PlusCar search](https://www.pluscarcanarias.com/en/home/) and [terms](https://www.pluscarcanarias.com/terminos-y-condiciones-de-alquiler/).
+
+
+## Stage 11 — незалежна переоцінка маршрутів (07.11.2026)
+
+Шість звітів Stage11 створено в дослідницькій гілці:
+- [Незалежне відкриття локацій](STAGE11_INDEPENDENT_DESTINATION_DISCOVERY.md)
+- [Сценарії маршрутів](STAGE11_ROUTE_SCENARIOS.md)
+- [Час і транспорт](STAGE11_TIME_AND_TRANSPORT_MATRIX.md)
+- [Оцінювання та чутливість](STAGE11_ROUTE_SCORING.md)
+- [Рекомендації для сім'ї](STAGE11_RECOMMENDATIONS.md)
+- [Відкриті питання](STAGE11_OPEN_QUESTIONS.md)
+
+Основні висновки: центральний маршрут Фуертевентури залишається сильним за умови port handover; Corralejo є окремою альтернативою, а Museo del Queso Majorero — новою культурною заміною. На Лансароте Timanfaya → El Golfo → Los Hervideros → La Geria є найплавнішою базовою південною петлею; Jameos лишається рівноцінним сімейним вибором, якщо цінніший центр Манріке. На Гран-Канарії повний список Vegueta–Teror–Pico–Maspalomas не рекомендується як базовий; обрати місько-природний D, міськість+дюни C або гори+Teror B. Гори й дюни технічно сумісні тільки як інтенсивний короткий сценарій, без Teror/Roque Nublo. На Мадейрі західне кільце лишається за ясної погоди; міський/південний маршрут — повноцінна альтернатива, а приватний гід не перемагає без перевіреної ціни, pickup і return. На Тенерифе зберігаються Loro 13.01 і Siam 14.01; 15.01 базово короткий південний маршрут, Teide тільки за погодного «зеленого світла».
+
+Stage10 розширив варіанти, але не довів date-specific наявність більшості авто. PlusCar €39.95 — аеропортова пропозиція FUE, не підтверджений круїзний handover. Графік CICAR не використаний як аргумент відмови від маршруту: окремо оцінено LPA/портову доставку та післяробоче повернення. На Мадейрі fees RentADrive/GAR105 залежать від конкретного місця й способу handback. Для TopCar Tenerife необхідно звірити багажник 2 великих валіз + 4 рюкзаки і можливість цільового повернення 16:00 попри 17:00 у записі ваучера.
+
+Не змінено сайт/затверджені маршрути; бронювань, платежів і звернень операторам не робилося. Повна вартість прокату на дати переважно відкрита; відсутність котирування не означає sold out. Перевіряти ці звіти разом із Stage10, реєстром бронювань та відповідними маршрутами островів; див. [Stage11 open questions](STAGE11_OPEN_QUESTIONS.md).
