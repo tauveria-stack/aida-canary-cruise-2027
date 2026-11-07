@@ -336,3 +336,21 @@
 - Перевірено 2026-11-07: обидва посилання відкривають Highlights Instagram; прочитано початкову сторіс кожної добірки, повні добірки не переглядалися.
 - Канари: анонс першого групового круїзу команди у 2026 році з Тенерифе. Мадейра: ранковий вид Фуншала з борту лайнера.
 - Тип: авторські/промоматеріали, а не незалежні відгуки. Зберігати як візуальні ідеї; практичні маршрути, ціни, доступність і якість сервісу не підтверджують. За потреби оцінки агенції — окремо перевірити письмову ціну, договір та скасування. Контакти приватних осіб не копіювати.
+
+
+## Етап 10 — оренда авто (перевірено 07.11.2026)
+
+| Джерело | Острів/тема | Що перевірено | Статус/межа |
+|---|---|---|---|
+| [PlusCar Canarias locations](https://www.pluscarcanarias.com/nuestras-oficinas/) + [Fuerteventura](https://www.pluscarcanarias.com/fuerteventura/) | Fuerteventura, Lanzarote, Gran Canaria, Tenerife | Розміщення/портові послуги; сайт заявляє безкоштовну доставку в порт/аеропорт; live search FUE 07.01 показав авто/ціни на airport pickup | Портова передача на конкретний день/годину не підтверджена; умови мають виключення покриття |
+| [CICAR conditions](https://www.cicar.com/EN/view/condiciones_EN) + [company history](https://www.cicar.com/EN/view/info_EN) | Canary Islands | Покриття, паливний депозит, скасування; зв’язок CICAR із Cabrera Medina Group | CICAR/Cabrera Medina не рахуємо незалежними парками |
+| [CICAR port offices](https://www.cicar.com/en/action/officeview/fuerteventura-cruising-port), [Lanzarote](https://www.cicar.com/en/action/officeview/lanzarote-cruising-port), [Gran Canaria](https://www.cicar.com/EN/action/officeview/las-palmas-cruising-port) | Fuerteventura, Lanzarote, Gran Canaria | Портові локації, години офісів | Наявність/ціна Jan 2027 не встановлені |
+| [TopCar FAQ](https://top-car-hire.com/en/legal/frequently-asked-questions/), [hire terms](https://top-car-hire.com/en/legal/hire-conditions/) | Canary Islands | Airport keydrop, картка, депозит, паливо | 24h keydrop для LPA/TFS/ACE — не доказ keydrop у круїзних офісах |
+| [AutoReisen Fuerte](https://www.autoreisen.com/car-hire/fuerteventura/airport/), [Lanzarote](https://www.autoreisen.com/car-hire/lanzarote/airport/) | Fuerteventura, Lanzarote | Пункти ACE/FUE й опубліковані all-in умови | Airport pickup, не порт; котирування на дати не отримано |
+| [RentADrive locations](https://www.rentadrive.pt/locations.html) + [terms](https://www.rentadrive.pt/terms.html) | Madeira | Port of Funchal pickup, out-of-hours return/fees/deposit caveat | Ціна й наявність 11.01.2027 не перевірені |
+| [Madeira Rent FAQ](https://www.madeirarent.pt/en/faqs), [Hot Wheels FAQ](https://www.madeirahotwheels.com/faq/) | Madeira | Названі keydrop points; заявлена harbour delivery | Термінал/зворотний handback/дата потребують підтвердження |
+| [FuerteTaxi rates](https://fuertetaxi.com/en/prices), [Las Palmas Port transport](https://laspalmascruiseport.com/transportation/) | Fuerteventura, Gran Canaria | Орієнтовні transfer costs/time for airport fallback | Не тарифна гарантія/не точний маршрутний quote |
+| [DGT foreign driver guidance](https://www-pro.dgt.es/muevete-con-seguridad/viaja-seguro/consejos-extranjeros/antes-de-conducir-por-espana/) | Spain / Ukrainian licence | DGT guidance for non-EU/EEA licences | Carry IDP with national licence/passport as risk-minimizing practice; operator acceptance still confirm |
+| [Which? Cicar](https://www.which.co.uk/reviews/car-hire/article/car-hire-company-reviews/cicar-alOzn9S9uatQ), [Trustpilot TopCar](https://www.trustpilot.com/review/top-car-hire.com), [RentADrive](https://www.trustpilot.com/review/rentadrive.pt) | Independent reviews | Consumer feedback and aggregated survey | Qualitative; not date availability nor guarantee of handover |
+
+Повна методика та порівняння збережені в документах [Stage 10 rental market audit](STAGE10_RENTAL_MARKET_AUDIT.md), [price matrix](STAGE10_RENTAL_PRICE_MATRIX.md), [pickup/return logistics](STAGE10_PICKUP_RETURN_LOGISTICS.md), [shortlist](STAGE10_RENTAL_SHORTLIST.md) і [open questions](STAGE10_OPEN_QUESTIONS.md). **Жоден маршрут або бронювання не змінено; стороннім компаніям не надсилали запити.**
