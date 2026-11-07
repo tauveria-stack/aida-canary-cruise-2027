@@ -114,3 +114,17 @@
 
 
 - Додаткова пряма перевірка CICAR 07.11.2026: офіційний booking date picker після вибору Fuerteventura Cruising Port показував лише листопад/грудень 2026 і не дозволяв вибрати січень 2027. Це означає, що дата-специфічну ціну й інвентар 07.01 неможливо було прочитати через цю форму на день перевірки; це не доказ sold out. Повторити 14.11.2026.
+
+
+
+## Прокат авто — досліджено, не бронювали (07.11.2026)
+
+| Острів / дата | Статус і повна ціна | Логістика |
+|---|---|---|
+| Fuerteventura 07.01 | PlusCar FUE показав €39.95 Polo manual, але вік водія стояв 23–25; повторити quote, port inventory не підтверджений | Port CICAR/TopCar є; airport taxi €40 sedan/€60 MPV return приблизно |
+| Lanzarote 08.01 | CICAR/TopCar port desks є; exact-date total/availability не підтверджені | CICAR до 18:45, TopCar 08:00–12:00; port key drop не доведено |
+| Gran Canaria 09.01 | Несхожі оператори є в порту, місті й LPA; exact-date total/availability не підтверджені | CICAR closes 19:00; LPA TopCar key drop 24/7, taxi port return €60–70 rough |
+| Madeira 11.01 | RentADrive/GAR105 та інші незалежні місцеві оператори; exact-date total/availability не підтверджені | RentADrive out-of-hours €30; GAR105 €10 at 21:00–23:00 + €2/day regional fee; точний причал не підтверджено |
+| Tenerife 13–15.01 | Наявне бронювання TopCar TFN→TFS — baseline; користуватися сумою з ваучера | Перевірити trunk space для двох великих валіз і чотирьох рюкзаків; змін не внесено |
+
+Не є бронюваннями або підтвердженням вільних авто. Скасування/оплата не здійснювались.
