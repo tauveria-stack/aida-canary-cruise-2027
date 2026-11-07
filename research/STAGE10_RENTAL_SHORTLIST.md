@@ -50,3 +50,18 @@ CICAR joined the Cabrera Medina Group; Autos Cabrera Medina and CICAR must be co
 - [RentADrive cruise pickup](https://www.rentadrive.pt/locations.html)
 - [Madeira Rent key drop](https://www.madeirarent.pt/en/faqs)
 - [DGT foreign licence rules](https://www-pro.dgt.es/muevete-con-seguridad/viaja-seguro/consejos-extranjeros/antes-de-conducir-por-espana/)
+
+
+
+## Додаток: поправка незалежності та реальної логістики
+
+| Острів | Перший сценарій для наступної перевірки | Незалежні альтернативи | Повний total / достовірність |
+|---|---|---|---|
+| Fuerteventura | PlusCar портова передача тільки за підтвердженням на ваучері; порівняти CICAR і TopCar port | PlusCar, CICAR/Grupo Cabrera, TopCar, AutoReisen, Enterprise | €39.95 PlusCar airport tentative із неправильним віком водія + €40 sedan/€60 MPV taxi round-trip; портова ціна не встановлена. Висока впевненість щодо існування офісів, низька щодо exact-date availability/return |
+| Lanzarote | CICAR Marina Lanzarote: портовий офіс працює до 18:45 у день стоянки | CICAR/Grupo Cabrera, TopCar, PlusCar, AutoReisen, Enterprise | Full quote відсутній. TopCar порт 08:00–12:00; не враховувати його як вечірній return без окремих правил |
+| Gran Canaria | CICAR port pickup, якщо return до 19:00 прийнятний; інакше LPA airport return/keybox | CICAR/Grupo Cabrera, TopCar, PlusCar, Avis Corporate, Enterprise | Full quote відсутній; LPA taxi €60–70 round-trip орієнтовно. CICAR after-hours port return не доведений |
+| Madeira | Порівняти прямий cruise pickup RentADrive з GAR105 після checkout-підтвердження портового місця | RentADrive, GAR105, Madeira Rent, Madeira Car Hire, Madeira Hot Wheels, Renting Madeira | Full quote відсутній; RentADrive €30 return 21:30, GAR105 €10 21:00–23:00 + €2/day regional fee. Достовірність тарифів висока, port appointment GAR105 невідомий |
+| Tenerife | Зберегти вже наявне TopCar TFN→TFS; дивитися альтернативу тільки якщо ваучерний клас не вміщує багаж | TopCar, CICAR/Grupo Cabrera, AutoReisen, PlusCar, Canarias.com та airport networks | Ціна — лише з ваучера; альтернативні exact-date totals відсутні. TFS keybox 24/7; місткість класу для 2 валіз + 4 рюкзаків перевірити |
+
+PlusCar, CICAR, TopCar, AutoReisen, Enterprise, Avis та кожен локальний оператор Мадейри створюють щонайменше три незалежні реальні варіанти на кожному острові, але у більшості немає exact-date inventory/total. CICAR, Autos Cabrera Medina й PaylessCar рахуються однією групою. Перевірку не трактувати як бронювання; маршрути не змінено.
+
