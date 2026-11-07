@@ -5,7 +5,7 @@
 ## Питання, які можуть змінити вибір
 
 ### Фуертевентура — 07.01
-- [ ] Відкрий PlusCar пошук із правильним віком основного водія; повторно звірити 09:30–18:30 / port pickup & return. Чи є €39.95 (VW Polo manual, 5 seats) для актуальної вікової категорії?
+- [x] Повторний пошук PlusCar з категорією 30+ для FUE Airport, 07.01.2027 09:30–19:30: показано VW Polo manual (5 місць) €39,95. **Портове отримання/повернення, депозит і бронювання залишаються непідтвердженими.**
 - [ ] Чи підтвердить PlusCar port-specific передачу авто біля круїзного причалу і точне місце/час зустрічі?
 - [ ] Чи можна повернути авто до 19:30 в тому самому місці, якщо офіс/служба передачі вже не працює? Який порядок огляду/фото/ключа?
 - [ ] CICAR calendar: попередній date-picker показував лише до Dec 2026 07.11; повторити 14.11, потім 21.11. Точні часові пошуки раніше давали недоступність лише для частини вікон.
@@ -61,7 +61,7 @@
 
 
 ## Контрольні питання після зовнішньої перевірки
-- [ ] Перепорахувати PlusCar FUE за фактичним віком водія та підтвердити port pickup/return і 19:30 drop; попереднє поле було 23–25 років.
+- [ ] Перепорахувати PlusCar FUE за фактичним віком водія та підтвердити port pickup/return і 19:30 drop; попереднє поле було 30+ років.
 - [ ] CICAR/TopCar Fuerte port: точне місце повернення після 19:00; TopCar port office працює 08:00–12:00.
 - [ ] Lanzarote: перевірити live quote CICAR і return до 18:45; для airport-only варіанта включити сімейний трансфер.
 - [ ] Gran Canaria: підтвердити, чи CICAR приймає портове повернення після 19:00; інакше додати LPA taxi (€60–70 planning estimate round-trip) до full total.
@@ -70,21 +70,4 @@
 - [ ] У кожному checkout записати групу, total, обов'язкове страхування, excess/deposit/hold, карту водія, додаткового водія, пальне, mileage, cancellation cutoff, документи й вимогу IDP.
 - [ ] Окремо фіксувати мінімум прокату, сімейну ціну трансферу, час у дорозі, чергу/посадку та час передачі авто.
 
-
-
-## Corrigendum — PlusCar date-specific availability with correct driver age (07.11.2026)
-
-This direct official booking-form search supersedes the earlier note that treated the €39.95 result as selected for driver age 23–25. The second search selected age +30 (the appropriate group for the primary driver), Fuerteventura Airport, pickup 07.01.2027 09:30 and return 07.01.2027 19:30. The results page showed these live cars/prices for that 10-hour rental:
-
-| Displayed class/model | Seats / transmission | Total shown |
-|---|---|---:|
-| Hyundai i10 | 4 / manual | €35.00 |
-| Mitsubishi Star | 4 / manual | €35.00 |
-| VW Polo | 5 / manual | €39.95 |
-| Hyundai i10 | 4 / automatic | €39.95 |
-| Audi A1 | 5 / manual | €45.00 |
-| Skoda Fabia | 5 / automatic | €46.00 |
-
-For four travelers, only the displayed five-seat classes are viable for seating; the Polo manual €39.95 is the lowest shown 5-seat manual class. The form labels prices as totals/€/day and shows IGIC, full-risk insurance, unlimited mileage, free extra driver and free change/cancellation as included; fuel is same-level. The reserved model is not guaranteed (similar class), trunk volume was not specified, deposit/card hold was not shown, and coverage exclusions remain (including tires/wheels, underbody, roof, interior and clutch). The search reached the vehicle-results page only; no car was selected and no booking/payment was made.
-
-The pickup dropdown listed Fuerteventura Airport, Esmeralda and Prin Fuerte; it did not offer the cruise port. PlusCar's general Fuerteventura page advertises port delivery, but the direct form did not price or confirm that handover. Treat €39.95 as an exact-date, correct-age **airport** quote and port delivery as unresolved. A 10-hour booking returned the displayed one-day rate, so no shorter cruise-hour price was demonstrated. Source: [official PlusCar search](https://www.pluscarcanarias.com/en/home/) and [terms](https://www.pluscarcanarias.com/terminos-y-condiciones-de-alquiler/).
+**Уточнення перевірки PlusCar (07.11.2026):** повторний пошук з віковою категорією водія 30+, FUE Airport, 07.01.2027 09:30–19:30 показав VW Polo manual (5 місць) за €39,95, Audi A1 manual (5) €45 і Skoda Fabia automatic (5) €46. Це показаний тариф/інвентар аеропорту, не підтверджена портова видача, не ваучер і не бронювання. Форма не показала депозит/hold; винятки зі страхування залишаються. [Форма PlusCar](https://www.pluscarcanarias.com/en/home/).
