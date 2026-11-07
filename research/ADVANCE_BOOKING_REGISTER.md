@@ -128,3 +128,22 @@
 | Tenerife 13–15.01 | Наявне бронювання TopCar TFN→TFS — baseline; користуватися сумою з ваучера | Перевірити trunk space для двох великих валіз і чотирьох рюкзаків; змін не внесено |
 
 Не є бронюваннями або підтвердженням вільних авто. Скасування/оплата не здійснювались.
+
+
+
+## Corrigendum — PlusCar date-specific availability with correct driver age (07.11.2026)
+
+This direct official booking-form search supersedes the earlier note that treated the €39.95 result as selected for driver age 23–25. The second search selected age +30 (the appropriate group for the primary driver), Fuerteventura Airport, pickup 07.01.2027 09:30 and return 07.01.2027 19:30. The results page showed these live cars/prices for that 10-hour rental:
+
+| Displayed class/model | Seats / transmission | Total shown |
+|---|---|---:|
+| Hyundai i10 | 4 / manual | €35.00 |
+| Mitsubishi Star | 4 / manual | €35.00 |
+| VW Polo | 5 / manual | €39.95 |
+| Hyundai i10 | 4 / automatic | €39.95 |
+| Audi A1 | 5 / manual | €45.00 |
+| Skoda Fabia | 5 / automatic | €46.00 |
+
+For four travelers, only the displayed five-seat classes are viable for seating; the Polo manual €39.95 is the lowest shown 5-seat manual class. The form labels prices as totals/€/day and shows IGIC, full-risk insurance, unlimited mileage, free extra driver and free change/cancellation as included; fuel is same-level. The reserved model is not guaranteed (similar class), trunk volume was not specified, deposit/card hold was not shown, and coverage exclusions remain (including tires/wheels, underbody, roof, interior and clutch). The search reached the vehicle-results page only; no car was selected and no booking/payment was made.
+
+The pickup dropdown listed Fuerteventura Airport, Esmeralda and Prin Fuerte; it did not offer the cruise port. PlusCar's general Fuerteventura page advertises port delivery, but the direct form did not price or confirm that handover. Treat €39.95 as an exact-date, correct-age **airport** quote and port delivery as unresolved. A 10-hour booking returned the displayed one-day rate, so no shorter cruise-hour price was demonstrated. Source: [official PlusCar search](https://www.pluscarcanarias.com/en/home/) and [terms](https://www.pluscarcanarias.com/terminos-y-condiciones-de-alquiler/).
