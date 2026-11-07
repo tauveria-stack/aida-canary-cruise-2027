@@ -40,3 +40,14 @@
 - [Fuerte Taxi approximate airport rates](https://fuertetaxi.com/en/prices); [Las Palmas port transport](https://laspalmascruiseport.com/transportation/).
 - [RentADrive port locations](https://www.rentadrive.pt/locations.html), [terms/out-of-hours](https://www.rentadrive.pt/terms.html), [deposit note](https://www.rentadrive.pt/reservation.html).
 - [Madeira Rent FAQ](https://www.madeirarent.pt/en/faqs).
+
+
+
+## Перевірені поправки від 07.11.2026
+
+- PlusCar FUE €39.95 (Polo manual/5 місць, airport 07.01 09:30–18:30) — попередня live ціна; поле віку було 23–25. Перевірити тариф з віком основного водія та окремо портову зустріч. Якщо pickup тільки FUE, додається приблизно €40 sedan або €60 MPV за taxi round-trip, плюс пальне.
+- Для CICAR/TopCar на Lanzarote, операторів Gran Canaria, Madeira та альтернатив Tenerife у звіті немає live checkout total на нашу дату. Це «не встановлено», а не «немає автомобілів».
+- GAR105 Madeira: €2/день обов'язкового збору; SCDW включене в online total, якщо checkout це підтверджує; додатковий водій €2.50/день, child/booster €6/€2/день. Повернення 21:00–23:00 коштує €10; загальна ціна авто не отримана. RentADrive має €30 позаробочої доплати на повернення 21:30.
+- Повернення TopCar з keybox без доплати підтверджене в аеропортах LPA/TFS/ACE, а не в круїзних офісах. Для FUE та TFN діють години доступу аеропортів; не закладати автоматичний цілодобовий drop.
+- Сімейний total дорівнює тарифу авто з податками та обов'язковими покриттями + потрібні дитячі/другий водій надбавки + трансфер + пальне; депозит/hold показувати окремо. Немає підтверджених погодинних круїзних тарифів; бюджетувати як мінімум одноденний тариф, поки checkout не засвідчить коротший блок.
+
