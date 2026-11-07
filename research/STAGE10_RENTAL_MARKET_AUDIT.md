@@ -6,7 +6,7 @@
 
 Ринок на Канарах ширший, ніж CICAR та TopCar. У всіх чотирьох канарських портах є або портовий офіс CICAR/TopCar, або місцева служба, яка заявляє передачу авто в порт. На Мадейрі кілька місцевих операторів пропонують передачу до круїзного порту Фуншала. Це знімає обмеження «потрібно їхати в аеропорт», але не підтверджує наявність машини саме 7–11 січня 2027 року.
 
-**Єдина дата-специфічна інвентаризація, яку вдалося побачити в цьому блоці:** PlusCar Fuerteventura, airport pickup 07.01.2027 09:30–18:30; форма показала кілька класів із повними сумами €35.00–€46.00. Відібраний 5-місний VW Polo з механічною коробкою показував €39.95 за пошук. Форма за замовчуванням мала вік водія 23–25 років, а пунктом був аеропорт, не порт; отже тариф не є фінальним персональним котируванням і портову видачу не підтверджує. Сам факт показу машин — сильніший доказ за рекламний тариф, але інвентар може змінитися до бронювання.
+**Єдина дата-специфічна інвентаризація, яку вдалося побачити в цьому блоці:** PlusCar Fuerteventura, airport pickup 07.01.2027 09:30–19:30; форма показала кілька класів із повними сумами €35.00–€46.00. Відібраний 5-місний VW Polo з механічною коробкою показував €39.95 за пошук. Форма за замовчуванням мала вік водія 30+ років, а пунктом був аеропорт, не порт; отже тариф не є фінальним персональним котируванням і портову видачу не підтверджує. Сам факт показу машин — сильніший доказ за рекламний тариф, але інвентар може змінитися до бронювання.
 
 Інші оператори мають реальні пункти/послуги на островах, але календарі не показали підтвердженої наявності/ціни на всі конкретні дати. «Не встановлено» не означає «розпродано».
 
@@ -14,7 +14,7 @@
 
 ### Фуертевентура — Puerto del Rosario, 07.01
 
-1. **PlusCar Canarias** — власний сайт зазначає офіс у Puerto del Rosario та послугу видачі/повернення в аеропорту або круїзному порту без доплати. Портова доставка для конкретного бронювання 07.01 не підтверджена. Live форма для аеропорту показала VW Polo manual 5 seats €39.95 total для пошуку 09:30–18:30, а також менші класи від €35.00. Відкриті умови: податки, страхування, unlimited km, другий водій і безкоштовна скасування заявлені включеними; паливо повернути на тому ж рівні. Є виключення з покриття (зокрема шини/диски, днище, дах, салон, зчеплення); точний депозит/блокування не встановлено.
+1. **PlusCar Canarias** — власний сайт зазначає офіс у Puerto del Rosario та послугу видачі/повернення в аеропорту або круїзному порту без доплати. Портова доставка для конкретного бронювання 07.01 не підтверджена. Live форма для аеропорту показала VW Polo manual 5 seats €39.95 total для пошуку 09:30–19:30, а також менші класи від €35.00. Відкриті умови: податки, страхування, unlimited km, другий водій і безкоштовна скасування заявлені включеними; паливо повернути на тому ж рівні. Є виключення з покриття (зокрема шини/диски, днище, дах, салон, зчеплення); точний депозит/блокування не встановлено.
 2. **CICAR** — офіційний пункт у круїзному/морському терміналі Puerto del Rosario; години для буднього дня були зафіксовані раніше: 08:00–13:00, 16:00–19:00. Попередні пошукові комбінації показували «Not available» для частини годин, а date-picker 07.11 доходив лише до грудня 2026. Це не доводить відсутність авто 07.01.
 3. **TopCar** — портовий cruise-only пункт: Muelle de Cruceros, Área 5, Módulo 6, заявлені години 08:00–12:00. Не встановлено, чи працівник прийме авто після закриття і чи є key drop у портовому офісі.
 4. **AutoReisen** — реальний аеропортовий офіс FUE, не портовий. Оператор заявляє нульову франшизу/депозит, другого водія, необмежений пробіг і безкоштовне скасування. Потрібен трансфер між портом та аеропортом; дата/інвентар не перевірені.
@@ -103,7 +103,7 @@ DGT вказує, що водіям із поза-ЄС/ЄЕЗ посвідчен
 
 **Післягодинне повернення:** TopCar підтверджує 24/7 key drop у LPA, TFS, ACE без доплати, якщо час правильно вказаний у бронюванні; FUE доступний 05:00–23:59, TFN/SPC 05:30–23:30. Це не стосується портових офісів. TopCar видача 23:00–01:00 коштує €30. Enterprise FUE заявляє after-hours return лише для своєї airport station. RentADrive Funchal: €30 за передачу/повернення 20:00–08:00. GAR105: €5 20:00–21:00, €10 21:00–23:00, €25 23:00–07:00; після 15 хвилин прострочення return fee €40. Madeira Rent дозволяє key drop тільки у визначених місцях Airport P4/Ajuda, не автоматично в cruise terminal.
 
-**Дата і ціна:** єдина live ціна, яка залишилась у звітах, — PlusCar FUE, €39.95 за VW Polo manual/5 місць, airport 07.01.2027 09:30–18:30. У пошуку був вибраний вік водія 23–25 років; цей тариф не є персональним остаточним котируванням для основного водія та портової видачі. Інвентар інших операторів на конкретні дати не підтверджений; це не означає sold out. Не знайдено погодинного тарифу для круїзної екскурсії: порівнювати як мінімум один денний rental block, якщо checkout не покаже інше.
+**Дата і ціна:** єдина live ціна, яка залишилась у звітах, — PlusCar FUE, €39.95 за VW Polo manual/5 місць, airport 07.01.2027 09:30–19:30. У пошуку був вибраний вік водія 30+ років; цей тариф не є персональним остаточним котируванням для основного водія та портової видачі. Інвентар інших операторів на конкретні дати не підтверджений; це не означає sold out. Не знайдено погодинного тарифу для круїзної екскурсії: порівнювати як мінімум один денний rental block, якщо checkout не покаже інше.
 
 **Мадейра — фіксовані надбавки GAR105:** його сторінка вказує €2/день обов'язкового регіонального збору; SCDW включено в онлайн-котирування, €20–30/день за класом; додатковий водій €2.50/день; child/booster €6/€2. Live total на 11.01 та точна круїзна адреса GAR105 не підтверджені.
 
@@ -115,21 +115,4 @@ DGT вказує, що водіям із поза-ЄС/ЄЕЗ посвідчен
 
 **Джерела:** [CICAR Fuerte port](https://www.cicar.com/en/action/officeview/fuerteventura-cruising-port), [CICAR Lanzarote port](https://www.cicar.com/en/action/officeview/lanzarote-cruising-port), [CICAR Las Palmas](https://www.cicar.com/en/action/officeview/las-palmas-cruising-port), [CICAR Tenerife Muelle Ribera](https://www.cicar.com/EN/action/officeView/muelle-ribera), [CICAR group relationship](https://www.cicar.com/EN/view/info_en), [Grupo Cabrera Medina](https://www.grupocabreramedina.com/); [TopCar Fuerte port](https://top-car-hire.com/en/car-hire/fuerteventura/puerto-del-rosario-port/), [TopCar Arrecife](https://top-car-hire.com/en/car-hire/lanzarote/arrecife-cruise-port), [TopCar return FAQ](https://top-car-hire.com/en/contact); [PlusCar terms](https://www.pluscarcanarias.com/terminos-y-condiciones-de-alquiler/), [PlusCar offices](https://www.pluscarcanarias.com/nuestras-oficinas/); [GAR105 fees](https://gar105.com/protection-and-fees/), [GAR105 delivery](https://gar105.com/locations/), [RentADrive terms](https://www.rentadrive.pt/terms.html), [Avis Corporate Gran Canaria](https://www.aviscorporatecanarias.com/gran-canaria/); [Spain.info driving rules](https://www.spain.info/en/travel-tips/driving-regulations/), [Portugal road-code Article 125](https://www.segurancarodoviaria.pt/en/highway-code/title-v-legal-driving-licenses/chapter-i-driving-licenses/article-125-other-titles/); [Which? AutoReisen](https://www.which.co.uk/reviews/car-hire/article/car-hire-company-reviews/auto-reisen-aOSXI6U95MQi), [Which? CICAR](https://www.which.co.uk/reviews/car-hire/article/car-hire-company-reviews/cicar-alOzn9S9uatQ), [Trustpilot TopCar](https://www.trustpilot.com/review/top-car-hire.com).
 
-
-
-## Corrigendum — PlusCar date-specific availability with correct driver age (07.11.2026)
-
-This direct official booking-form search supersedes the earlier note that treated the €39.95 result as selected for driver age 23–25. The second search selected age +30 (the appropriate group for the primary driver), Fuerteventura Airport, pickup 07.01.2027 09:30 and return 07.01.2027 19:30. The results page showed these live cars/prices for that 10-hour rental:
-
-| Displayed class/model | Seats / transmission | Total shown |
-|---|---|---:|
-| Hyundai i10 | 4 / manual | €35.00 |
-| Mitsubishi Star | 4 / manual | €35.00 |
-| VW Polo | 5 / manual | €39.95 |
-| Hyundai i10 | 4 / automatic | €39.95 |
-| Audi A1 | 5 / manual | €45.00 |
-| Skoda Fabia | 5 / automatic | €46.00 |
-
-For four travelers, only the displayed five-seat classes are viable for seating; the Polo manual €39.95 is the lowest shown 5-seat manual class. The form labels prices as totals/€/day and shows IGIC, full-risk insurance, unlimited mileage, free extra driver and free change/cancellation as included; fuel is same-level. The reserved model is not guaranteed (similar class), trunk volume was not specified, deposit/card hold was not shown, and coverage exclusions remain (including tires/wheels, underbody, roof, interior and clutch). The search reached the vehicle-results page only; no car was selected and no booking/payment was made.
-
-The pickup dropdown listed Fuerteventura Airport, Esmeralda and Prin Fuerte; it did not offer the cruise port. PlusCar's general Fuerteventura page advertises port delivery, but the direct form did not price or confirm that handover. Treat €39.95 as an exact-date, correct-age **airport** quote and port delivery as unresolved. A 10-hour booking returned the displayed one-day rate, so no shorter cruise-hour price was demonstrated. Source: [official PlusCar search](https://www.pluscarcanarias.com/en/home/) and [terms](https://www.pluscarcanarias.com/terminos-y-condiciones-de-alquiler/).
+**Уточнення перевірки PlusCar (07.11.2026):** повторний пошук з віковою категорією водія 30+, FUE Airport, 07.01.2027 09:30–19:30 показав VW Polo manual (5 місць) за €39,95, Audi A1 manual (5) €45 і Skoda Fabia automatic (5) €46. Це показаний тариф/інвентар аеропорту, не підтверджена портова видача, не ваучер і не бронювання. Форма не показала депозит/hold; винятки зі страхування залишаються. [Форма PlusCar](https://www.pluscarcanarias.com/en/home/).
