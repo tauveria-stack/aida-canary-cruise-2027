@@ -6,7 +6,7 @@
 
 | Острів | Перший вибір для перевірки | Альтернативи | Що насправді відомо про дату | Повна ціна / логістика | Достовірність |
 |---|---|---|---|---|---|
-| Fuerteventura 07.01 | **PlusCar port handover**, якщо надасть саме port pickup/return на ваучері: може зняти трансфер до аеропорту і зберегти час | CICAR port; TopCar port; AutoReisen/Enterprise FUE airport | PlusCar аеропортова форма показала 5-seat VW Polo manual €39.95 для 09:30–18:30 саме 07.01; порт не підтверджений. CICAR має історію негативних exact-time пошуків і Jan picker limit, але не загально-ринкову відсутність. TopCar не має date-specific answer | €39.95 + used fuel + можливий transfer €40 sedan/€60 MPV round trip за approximate FuerteTaxi fare, якщо FUE pickup; портова доставка PlusCar заявлена як безкоштовна, але немає конкретного port quote | Ціна/airport inventory висока для стану форми на 07.11, середня як майбутній purchase quote; port feasibility середня-низька до підтвердження |
+| Fuerteventura 07.01 | **PlusCar port handover**, якщо надасть саме port pickup/return на ваучері: може зняти трансфер до аеропорту і зберегти час | CICAR port; TopCar port; AutoReisen/Enterprise FUE airport | PlusCar аеропортова форма показала 5-seat VW Polo manual €39.95 для 09:30–19:30 саме 07.01; порт не підтверджений. CICAR має історію негативних exact-time пошуків і Jan picker limit, але не загально-ринкову відсутність. TopCar не має date-specific answer | €39.95 + used fuel + можливий transfer €40 sedan/€60 MPV round trip за approximate FuerteTaxi fare, якщо FUE pickup; портова доставка PlusCar заявлена як безкоштовна, але немає конкретного port quote | Ціна/airport inventory висока для стану форми на 07.11, середня як майбутній purchase quote; port feasibility середня-низька до підтвердження |
 | Lanzarote 08.01 | **CICAR або TopCar cruise port** за фактичної видачі на дату | PlusCar port delivery; AutoReisen/Enterprise ACE | Є офіційні круїзні пункти у CICAR і TopCar; inventory Jan/quote не отримано. PlusCar заявляє портову доставку загалом | Ціна не встановлена; port pickup має найменший time loss. ACE fallback adds transfer; fare not verified | Висока для існування cruise offices, невстановлена для date availability |
 | Gran Canaria 09.01 | **CICAR Santa Catalina** або PlusCar port delivery | TopCar/CICAR LPA; Avis Dársena Africa; Enterprise airport | CICAR page lists Saturday office. PlusCar claims port delivery. Airport companies exist, but no car inventory/quote for 09.01 | No price confirmed. LPA taxi transfer estimate €60–70 return, 50–60min driving plus waits; bus 4-person return rough €24–48 plus more time (planning estimate) | Середня/висока для service pages; нижча для taxi estimate; date inventory unresolved |
 | Madeira 11.01 | **RentADrive cruise-port pickup** if contract confirms return to agreed Funchal/port location around 21:30 | Madeira Hot Wheels harbour delivery; Madeira Rent/Car Hire/Funchal local suppliers | RentADrive explicitly lists cruise ship pickup free. Hot Wheels FAQ says port delivery. Date inventory and 21:30 port return not confirmed | Quote missing; RentADrive night fee €30 applies in 20:00–08:00 window; possible €150 deposit for 1–2d booking even with sCDW | High on advertised location/fee; date-specific conditions unresolved |
@@ -65,22 +65,4 @@ CICAR joined the Cabrera Medina Group; Autos Cabrera Medina and CICAR must be co
 
 PlusCar, CICAR, TopCar, AutoReisen, Enterprise, Avis та кожен локальний оператор Мадейри створюють щонайменше три незалежні реальні варіанти на кожному острові, але у більшості немає exact-date inventory/total. CICAR, Autos Cabrera Medina й PaylessCar рахуються однією групою. Перевірку не трактувати як бронювання; маршрути не змінено.
 
-
-
-
-## Corrigendum — PlusCar date-specific availability with correct driver age (07.11.2026)
-
-This direct official booking-form search supersedes the earlier note that treated the €39.95 result as selected for driver age 23–25. The second search selected age +30 (the appropriate group for the primary driver), Fuerteventura Airport, pickup 07.01.2027 09:30 and return 07.01.2027 19:30. The results page showed these live cars/prices for that 10-hour rental:
-
-| Displayed class/model | Seats / transmission | Total shown |
-|---|---|---:|
-| Hyundai i10 | 4 / manual | €35.00 |
-| Mitsubishi Star | 4 / manual | €35.00 |
-| VW Polo | 5 / manual | €39.95 |
-| Hyundai i10 | 4 / automatic | €39.95 |
-| Audi A1 | 5 / manual | €45.00 |
-| Skoda Fabia | 5 / automatic | €46.00 |
-
-For four travelers, only the displayed five-seat classes are viable for seating; the Polo manual €39.95 is the lowest shown 5-seat manual class. The form labels prices as totals/€/day and shows IGIC, full-risk insurance, unlimited mileage, free extra driver and free change/cancellation as included; fuel is same-level. The reserved model is not guaranteed (similar class), trunk volume was not specified, deposit/card hold was not shown, and coverage exclusions remain (including tires/wheels, underbody, roof, interior and clutch). The search reached the vehicle-results page only; no car was selected and no booking/payment was made.
-
-The pickup dropdown listed Fuerteventura Airport, Esmeralda and Prin Fuerte; it did not offer the cruise port. PlusCar's general Fuerteventura page advertises port delivery, but the direct form did not price or confirm that handover. Treat €39.95 as an exact-date, correct-age **airport** quote and port delivery as unresolved. A 10-hour booking returned the displayed one-day rate, so no shorter cruise-hour price was demonstrated. Source: [official PlusCar search](https://www.pluscarcanarias.com/en/home/) and [terms](https://www.pluscarcanarias.com/terminos-y-condiciones-de-alquiler/).
+**Уточнення перевірки PlusCar (07.11.2026):** повторний пошук з віковою категорією водія 30+, FUE Airport, 07.01.2027 09:30–19:30 показав VW Polo manual (5 місць) за €39,95, Audi A1 manual (5) €45 і Skoda Fabia automatic (5) €46. Це показаний тариф/інвентар аеропорту, не підтверджена портова видача, не ваучер і не бронювання. Форма не показала депозит/hold; винятки зі страхування залишаються. [Форма PlusCar](https://www.pluscarcanarias.com/en/home/).
