@@ -34,3 +34,14 @@
 - [Las Palmas Cruise Port transport](https://laspalmascruiseport.com/transportation/), [Line 60 airport bus info](https://www.grancanariaairport.es/transport)
 - [RentADrive locations/port](https://www.rentadrive.pt/locations.html), [RentADrive terms](https://www.rentadrive.pt/terms.html), [Madeira Rent FAQ](https://www.madeirarent.pt/en/faqs)
 - [DGT foreign licence rules](https://www-pro.dgt.es/muevete-con-seguridad/viaja-seguro/consejos-extranjeros/antes-de-conducir-por-espana/)
+
+
+
+## Повторна перевірка позаробочого повернення — 07.11.2026
+
+TopCar підтверджує 24/7 key drop у LPA/TFS/ACE; FUE доступний 05:00–23:59, TFN/SPC 05:30–23:30. Ці правила не поширюються на портові офіси. TopCar Fuerte/Arrecife cruise counters зазначені 08:00–12:00. CICAR Santa Catalina закривається о 19:00 в суботу, тому цільове повернення Gran Canaria о 20:30 вимагає письмового off-site/key-return дозволу або повернення в LPA й трансферу назад. CICAR Lanzarote відкритий до 18:45 у п'ятницю, що відповідає цілі до 17:30. CICAR Fuerte закривається о 19:00; повернення 19:30 підтвердити окремо.
+
+RentADrive Funchal має €30 fee у вікні 20:00–08:00; GAR105 має €10 для 21:00–23:00 та €2/day mandatory regional fee. Передбачувана вигода GAR105 діє тільки якщо checkout погоджує конкретну адресу круїзного термінала. Madeira Rent key box — тільки визначені майданчики Airport P4/Ajuda. Лише назва «after-hours return» не підтверджує передачу біля трапа.
+
+Для Fuerte/Lanzarote портова видача скорочує transfer legs. На Gran Canaria аеропорт LPA має 24/7 повернення, але додає орієнтовно €60–70 сімейного taxi round-trip до Santa Catalina й 50–60 хв їзди. На Tenerife чинне TopCar TFN→TFS зберігається; TFS keybox дозволяє drop, але багажний клас і час із ваучера перевірити. Маршрут не змінено; години руху — тільки планові і не включають черги/передачу авто.
+
