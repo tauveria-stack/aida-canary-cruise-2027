@@ -28,3 +28,8 @@
 - [Логістика](../STAGE10_PICKUP_RETURN_LOGISTICS.md)
 - [Короткий список](../STAGE10_RENTAL_SHORTLIST.md)
 - [Відкриті питання](../STAGE10_OPEN_QUESTIONS.md)
+
+
+## Stage 11 — порівняння маршрутів після аудиту прокату
+
+Незалежні сценарії на всі п'ять островів, маршрути, часові моделі й відкриті рішення: [дослідження локацій](../STAGE11_INDEPENDENT_DESTINATION_DISCOVERY.md), [конкурентні маршрути](../STAGE11_ROUTE_SCENARIOS.md), [час/транспорт](../STAGE11_TIME_AND_TRANSPORT_MATRIX.md), [матриця балів](../STAGE11_ROUTE_SCORING.md), [рекомендації](../STAGE11_RECOMMENDATIONS.md), [питання до рішення](../STAGE11_OPEN_QUESTIONS.md). Висновки не змінюють затверджений сайтний маршрут; Stage10 інвентар/ціни лишаються «не підтверджено» там, де немає ваучера.
