@@ -147,3 +147,18 @@ This direct official booking-form search supersedes the earlier note that treate
 For four travelers, only the displayed five-seat classes are viable for seating; the Polo manual €39.95 is the lowest shown 5-seat manual class. The form labels prices as totals/€/day and shows IGIC, full-risk insurance, unlimited mileage, free extra driver and free change/cancellation as included; fuel is same-level. The reserved model is not guaranteed (similar class), trunk volume was not specified, deposit/card hold was not shown, and coverage exclusions remain (including tires/wheels, underbody, roof, interior and clutch). The search reached the vehicle-results page only; no car was selected and no booking/payment was made.
 
 The pickup dropdown listed Fuerteventura Airport, Esmeralda and Prin Fuerte; it did not offer the cruise port. PlusCar's general Fuerteventura page advertises port delivery, but the direct form did not price or confirm that handover. Treat €39.95 as an exact-date, correct-age **airport** quote and port delivery as unresolved. A 10-hour booking returned the displayed one-day rate, so no shorter cruise-hour price was demonstrated. Source: [official PlusCar search](https://www.pluscarcanarias.com/en/home/) and [terms](https://www.pluscarcanarias.com/terminos-y-condiciones-de-alquiler/).
+
+
+## Доповнення Stage 11 — маршрутні залежності (07.11.2026)
+
+Нових бронювань і підтверджених слотів немає. Використовуйте рекомендації Stage11 разом із цим реєстром:
+
+| День | Залежність маршруту | Контроль перед рішенням | Резерв без втрати запасу |
+|---|---|---|---|
+| 07.01 Fuerteventura | Центральна дуга потребує портової машини/дозволеного повернення; PlusCar €39.95 — тільки airport quote. Ajuy trail факультативна | Voucher, точна handover, key return, незалежність автопарку; години Museo del Queso | North Corralejo dunes або central museum маршрут |
+| 08.01 Lanzarote | Timanfaya A/B залежить від раннього слота; календар на 07.11 не показував січень, це не sold out | Перевірити календар повторно 01.12.2026; standard budget €105. Не брати €96 disability arithmetic без прийнятного документа | Північна Manrique петля C або La Geria/El Golfo маршрут |
+| 09.01 Gran Canaria | Ранній портовий pickup і повернення до CICAR 19:00 — фактор, не блокада. Гори+дюни лишити інтенсивним варіантом | Підтвердити exact pickup/return (включно з keybox/port delivery); перевірити погоду/дорогу; Roque Nublo тільки з квотою/дозволом | Vegueta + Jardín Canario/Bandama + Las Canteras |
+| 11.01 Madeira | Fanal залежить від видимості; повна PR13 потребує окремої реєстрації й не входить у короткий огляд | Прогноз високогір'я/закриття; RentADrive fee €30 у вікні 20–08; перевірити точну портову здачу | Câmara de Lobos + Cabo Girão/Funchal |
+| 15.01 Tenerife | Teide не є обов'язковим; переліт 18:30 і target TFS 16:30 важливіші | TopCar voucher return 17:00 vs target 16:00; клас багажника; прогноз/дороги; окремий PNT10 permit не потрібен для оглядового drive | El Médano / одна коротка південна зупинка |
+
+Відкриті дії й сімейні рішення: [STAGE11_OPEN_QUESTIONS.md](STAGE11_OPEN_QUESTIONS.md). Цей додаток не змінює існуючі рядки реєстру, не робить нових бронювань і не означає, що слот або авто наявні.
