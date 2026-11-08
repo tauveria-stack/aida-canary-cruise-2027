@@ -5,7 +5,12 @@
 </style></head><body>
 <header><div><a href="index.html" style="color:#c5f0f0">← До путівника</a><h1>Сімейний вибір</h1><p>Інтереси, маршрутні розвилки та нові ідеї для подорожі</p></div></header>
 <main class="shell">
-<div class="warning" role="status" id="sync-banner"><strong>Тестова версія.</strong> Відповіді поки зберігаються на цьому пристрої. Щоб підключити спільні відповіді, відкрийте налаштування нижче.</div><details class="card"><summary><strong>Підключення сімейних відповідей</strong></summary><p class="muted">Цей розділ налаштовується один раз після запуску сервера Railway. Код доступу не записується в браузер.</p><label for="api-url">Адреса сімейного сервера (HTTPS)</label><input id="api-url" type="url" placeholder="https://ваш-сервер.up.railway.app" style="width:100%;padding:12px;border:1px solid #b8cbd4;border-radius:10px;margin:8px 0"><label for="api-key">Сімейний код доступу</label><input id="api-key" type="password" autocomplete="off" style="width:100%;padding:12px;border:1px solid #b8cbd4;border-radius:10px;margin:8px 0"><button id="connect-api" class="primary" type="button">Підключити</button><p id="connect-status" class="status" role="status"></p></details>
+<div class="warning" role="status" id="sync-banner">Увійдіть у сімейний обліковий запис, щоб бачити спільні відповіді з різних пристроїв.</div>
+<section class="card" id="auth-card"><h2>Сімейний вхід</h2><p class="muted">Один спільний обліковий запис для чотирьох учасників. Пароль не записується у код сайту.</p>
+<div id="login-fields"><label for="family-email">Електронна адреса</label><input id="family-email" type="email" autocomplete="username" style="width:100%;padding:12px;margin:7px 0 12px;border:1px solid #b8cbd4;border-radius:10px">
+<label for="family-password">Пароль</label><input id="family-password" type="password" autocomplete="current-password" style="width:100%;padding:12px;margin:7px 0 12px;border:1px solid #b8cbd4;border-radius:10px"><button class="primary" type="button" id="login">Увійти</button></div>
+<div id="logged-in" class="hidden"><span id="signed-email"></span> <button type="button" id="logout">Вийти</button> <button type="button" id="refresh">Оновити відповіді</button></div>
+<p class="status" id="auth-status" aria-live="polite"></p></section>
 <section class="card"><h2>Хто зараз користується сайтом?</h2><label for="person" class="muted">Оберіть себе. На спільному пристрої можна змінити користувача.</label><div class="spacer"></div><select id="person"><option value="">Оберіть учасника</option><option value="volodymyr">Володимир</option><option value="yevheniia">Євгенія</option><option value="valerii">Валерій</option><option value="tymofii">Тимофій</option></select></section>
 <div id="workspace" class="hidden">
 <section class="card"><h2>Мої туристичні інтереси</h2><p class="muted">Для кожного пункту оберіть рівень інтересу. Можна змінювати будь-коли; пропущене питання не означає «нецікаво».</p><div id="interests"></div><p class="status" id="interest-status" aria-live="polite"></p></section>
@@ -19,65 +24,109 @@ const PEOPLE=['volodymyr','yevheniia','valerii','tymofii'];
 const CATEGORIES=[['nature','🌿 Природа'],['panorama','🌄 Панорами та оглядові майданчики'],['mountains','⛰️ Гори та вулкани'],['rural','🌾 Сільські пейзажі'],['seascape','🌊 Морські пейзажі'],['beach','🏖️ Пляжний відпочинок'],['animals','🦜 Тварини та зоопарки'],['whales','🐋 Кити й дельфіни'],['waterparks','💦 Аквапарки'],['rides','🎢 Атракціони'],['cable','🚠 Канатні дороги'],['museums','🏛️ Музеї та історія'],['towns','🏘️ Атмосферні міста й села'],['food','🍽️ Гастрономія'],['quiet','🌿 Тихий відпочинок'],['active','🥾 Активний відпочинок'],['walking','🚶 Прогулянки та походи'],['boat','⛵ Морські екскурсії']];
 const QUESTIONS={gran:[['mountains','Гори: Вегета → Терор → Піко-де-лас-Ньєвес'],['dunes','Дюни: Вегета → Маспаломас'],['unsure','Поки не визначився / визначилася']],whale:[['yes','Так, хочу спостерігати за китами'],['maybe','Можливо, залежить від часу та вартості'],['no','Ні, краще інша активність']]};
 const $=id=>document.getElementById(id),key=id=>'aida-family-prototype-v1:'+id;
-let person='';let apiUrl='';let apiKey='';let revisions={};let remoteAnswers={};let syncTimers={};let syncBusy={};
-function load(){if(apiUrl&&person&&remoteAnswers[person])return remoteAnswers[person];if(!person)return {interests:{},votes:{}};try{const d=JSON.parse(localStorage.getItem(key(person))||'{}');return {interests:d.interests&&typeof d.interests==='object'?d.interests:{},votes:d.votes&&typeof d.votes==='object'?d.votes:{}}}catch{return {interests:{},votes:{}}}}
-function save(d){localStorage.setItem(key(person),JSON.stringify(d));if(apiUrl&&apiKey){remoteAnswers[person]=d;scheduleSync(person)}}
-function renderInterests(){const d=load();const root=$('interests');root.replaceChildren();for(const [id,name] of CATEGORIES){const block=document.createElement('div');block.className='interest';const title=document.createElement('strong');title.textContent=name;block.append(title);const row=document.createElement('div');row.className='row';for(const [v,label] of [[0,'Нецікаво'],[1,'Цікаво'],[2,'Дуже!']]){const b=document.createElement('button');b.type='button';b.textContent=label;b.className=d.interests[id]===v?'active':'';b.setAttribute('aria-pressed',String(d.interests[id]===v));b.addEventListener('click',()=>{const next=load();next.interests[id]=v;next.updatedAt=new Date().toISOString();save(next);renderInterests();$('interest-status').textContent='Відповідь збережено.'});row.append(b)}block.append(row);root.append(block)}}
-function renderQuestion(id){const d=load(),root=$(id+'-votes');root.replaceChildren();for(const [v,label] of QUESTIONS[id]){const box=document.createElement('div');box.className='vote';const l=document.createElement('label');const radio=document.createElement('input');radio.type='radio';radio.name=id+'-choice';radio.value=v;radio.checked=d.votes[id]?.choice===v;l.append(radio,document.createTextNode(label));box.append(l);root.append(box)}$(id+'-comment').value=d.votes[id]?.comment||'';$(id+'-status').textContent=d.votes[id]?.updatedAt?'Останнє локальне збереження: '+new Date(d.votes[id].updatedAt).toLocaleString('uk-UA'):''}
-function render(){person=$('person').value;localStorage.setItem('aida-family-last-person',person);$('workspace').classList.toggle('hidden',!person);if(!person)return;renderInterests();renderQuestion('gran');renderQuestion('whale');$('interest-status').textContent=''}
-$('person').addEventListener('change',render);
-for(const id of Object.keys(QUESTIONS)){$('save-'+id).addEventListener('click',()=>{const selected=document.querySelector('input[name="'+id+'-choice"]:checked');if(!selected){$(id+'-status').textContent='Спочатку оберіть відповідь.';return}const d=load();d.votes[id]={choice:selected.value,comment:$(id+'-comment').value.trim(),updatedAt:new Date().toISOString()};save(d);$(id+'-status').textContent='Голос і коментар збережено.'})}
-
-// The shared code is kept only in memory and must not be embedded in a public site.
-async function apiRequest(path,options={}){
- const response=await fetch(apiUrl+path,{...options,headers:{'Authorization':'Bearer '+apiKey,'Content-Type':'application/json',...(options.headers||{})},cache:'no-store'});
- const data=await response.json().catch(()=>({}));
- if(!response.ok)throw Error(data.error||'Помилка з’єднання ('+response.status+')');
- return data;
+let person='';
+const SB_URL='https://mnuzruqhpkjoknjsgwaz.supabase.co';
+const SB_KEY='sb_publishable_T9WOLw4msTIvWCZYDmIWhQ_dRwwOzJN';
+let session=null,remoteAnswers={},revisions={},pending={},busy={};
+const empty=()=>({interests:{},votes:{}});
+function load(){if(!person)return empty();return remoteAnswers[person]||empty()}
+function showStatus(msg){$('sync-banner').textContent=msg}
+function enableUI(on){$('workspace').classList.toggle('hidden',!on||!person);$('person').disabled=!on}
+async function request(path,{method='GET',body,token}={}){
+ const headers={'apikey':SB_KEY,'Content-Type':'application/json'};
+ if(token||session?.access_token)headers.Authorization='Bearer '+(token||session.access_token);
+ const res=await fetch(SB_URL+path,{method,headers,body:body===undefined?undefined:JSON.stringify(body),cache:'no-store'});
+ const raw=await res.text();let data;try{data=raw?JSON.parse(raw):null}catch{data=null}
+ if(!res.ok)throw Error(data?.msg||data?.message||data?.error_description||data?.error||'Помилка сервера: '+res.status);
+ return {data,res};
 }
-async function refreshRemote(){
- const data=await apiRequest('/api/answers');
+async function accessToken(){
+ if(!session)throw Error('Спочатку увійдіть');
+ if(Date.now()<session.expires_at-60000)return session.access_token;
+ const {data}=await request('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:session.refresh_token},token:SB_KEY});
+ session={...data,expires_at:Date.now()+data.expires_in*1000};
+ return session.access_token;
+}
+async function readAll(){
+ const token=await accessToken();
+ const {data}=await request('/rest/v1/family_answers?select=person_id,interests,votes,revision,updated_at',{token});
  remoteAnswers={};revisions={};
- for(const answer of data.answers||[]){
-  remoteAnswers[answer.person]={interests:answer.interests||{},votes:answer.votes||{}};
-  revisions[answer.person]=answer.revision;
- }
- if(person){renderInterests();renderQuestion('gran');renderQuestion('whale')}
+ for(const row of data){remoteAnswers[row.person_id]={interests:row.interests||{},votes:row.votes||{}};revisions[row.person_id]=row.revision}
+ render();
 }
-function scheduleSync(id){
- clearTimeout(syncTimers[id]);
- syncTimers[id]=setTimeout(()=>syncPerson(id),650);
- $('sync-banner').textContent='Зберігаємо відповіді на спільному сервері…';
+function save(d){
+ if(!session)return;
+ const id=person;remoteAnswers[id]=d;
+ clearTimeout(pending[id]);
+ pending[id]=setTimeout(()=>sync(id),550);
+ showStatus('Зберігаємо відповідь…');
 }
-async function syncPerson(id){
- if(syncBusy[id]){scheduleSync(id);return}
- syncBusy[id]=true;
- const snapshot=JSON.stringify(remoteAnswers[id]||{interests:{},votes:{}});
+async function sync(id){
+ if(busy[id]){clearTimeout(pending[id]);pending[id]=setTimeout(()=>sync(id),700);return}
+ busy[id]=true;
+ const snapshot=JSON.stringify(remoteAnswers[id]||empty()),d=JSON.parse(snapshot);
  try{
-  const d=JSON.parse(snapshot);
-  const result=await apiRequest('/api/answers/'+id,{method:'PUT',body:JSON.stringify({interests:d.interests,votes:d.votes,revision:revisions[id]||0})});
-  revisions[id]=result.revision;
-  $('sync-banner').textContent='Відповіді синхронізовано. Їх можна переглянути з іншого пристрою.';
- }catch(err){
-  $('sync-banner').textContent='Не вдалося синхронізувати: '+err.message+' Локальна копія збережена. Перевірте підключення.';
- }finally{
-  syncBusy[id]=false;
-  if(JSON.stringify(remoteAnswers[id])!==snapshot)scheduleSync(id);
+  const token=await accessToken();let result;
+  if(revisions[id]){
+   result=await request('/rest/v1/family_answers?person_id=eq.'+encodeURIComponent(id)+'&revision=eq.'+revisions[id]+'&select=revision',{method:'PATCH',token,body:{interests:d.interests,votes:d.votes,revision:revisions[id]+1,updated_at:new Date().toISOString()}});
+   if(!result.data?.length)throw Error('Інший пристрій змінив відповіді. Оновіть сторінку, щоб не втратити зміни.');
+  }else{
+   result=await request('/rest/v1/family_answers?select=revision',{method:'POST',token,body:{person_id:id,interests:d.interests,votes:d.votes,revision:1,updated_at:new Date().toISOString()}});
+  }
+  revisions[id]=result.data[0].revision;
+  showStatus('Відповіді збережено у спільній базі.');
+ }catch(err){showStatus('Не збережено на сервері: '+err.message+' Не закривайте сторінку; спробуйте оновити відповіді.')}
+ finally{busy[id]=false;if(JSON.stringify(remoteAnswers[id])!==snapshot){clearTimeout(pending[id]);pending[id]=setTimeout(()=>sync(id),650)}}
+}
+function renderInterests(){
+ const d=load(),root=$('interests');root.replaceChildren();
+ for(const [id,name] of CATEGORIES){
+  const block=document.createElement('div');block.className='interest';
+  const title=document.createElement('strong');title.textContent=name;block.append(title);
+  const row=document.createElement('div');row.className='row';
+  for(const [v,label] of [[0,'Нецікаво'],[1,'Цікаво'],[2,'Дуже!']]){
+   const b=document.createElement('button');b.type='button';b.textContent=label;b.className=d.interests[id]===v?'active':'';
+   b.setAttribute('aria-pressed',String(d.interests[id]===v));
+   b.addEventListener('click',()=>{const next=structuredClone(load());next.interests[id]=v;save(next);renderInterests();$('interest-status').textContent='Відповідь вибрано.'});row.append(b);
+  }block.append(row);root.append(block);
  }
 }
-$('connect-api').addEventListener('click',async()=>{
- const url=$('api-url').value.trim().replace(/\\/$/,'');
- const code=$('api-key').value;
- if(!/^https:\/\/[^/]+$/.test(url)||!code){$('connect-status').textContent='Введіть HTTPS-адресу сервера та сімейний код.';return}
- apiUrl=url;apiKey=code;
- try{
-  await refreshRemote();
-  $('connect-status').textContent='Підключено. Відповіді завантажено зі спільного сервера.';
-  $('sync-banner').textContent='Спільне збереження увімкнено. Відповіді синхронізуються між пристроями.';
- }catch(err){
-  apiUrl='';apiKey='';$('connect-status').textContent='Не вдалося підключитися: '+err.message;
+function renderQuestion(id){
+ const d=load(),root=$(id+'-votes');root.replaceChildren();
+ for(const [v,label] of QUESTIONS[id]){
+  const box=document.createElement('div');box.className='vote';const l=document.createElement('label');
+  const radio=document.createElement('input');radio.type='radio';radio.name=id+'-choice';radio.value=v;radio.checked=d.votes[id]?.choice===v;
+  l.append(radio,document.createTextNode(label));box.append(l);root.append(box);
  }
+ $(id+'-comment').value=d.votes[id]?.comment||'';
+ $(id+'-status').textContent=d.votes[id]?.updatedAt?'Остання відповідь: '+new Date(d.votes[id].updatedAt).toLocaleString('uk-UA'):'';
+}
+function render(){person=$('person').value;enableUI(!!session);if(!person||!session)return;renderInterests();renderQuestion('gran');renderQuestion('whale')}
+$('person').addEventListener('change',render);
+for(const id of Object.keys(QUESTIONS))$('save-'+id).addEventListener('click',()=>{
+ const selected=document.querySelector('input[name="'+id+'-choice"]:checked');
+ if(!selected){$(id+'-status').textContent='Спочатку оберіть відповідь.';return}
+ const d=structuredClone(load());d.votes[id]={choice:selected.value,comment:$(id+'-comment').value.trim(),updatedAt:new Date().toISOString()};
+ save(d);$(id+'-status').textContent='Зберігаємо…';
 });
-
-const previous=localStorage.getItem('aida-family-last-person');if(PEOPLE.includes(previous))$('person').value=previous;render();
+$('login').addEventListener('click',async()=>{
+ $('login').disabled=true;$('auth-status').textContent='Виконуємо вхід…';
+ try{
+  const {data}=await request('/auth/v1/token?grant_type=password',{method:'POST',body:{email:$('family-email').value.trim(),password:$('family-password').value},token:SB_KEY});
+  session={...data,expires_at:Date.now()+data.expires_in*1000};
+  $('family-password').value='';await readAll();
+  $('login-fields').classList.add('hidden');$('logged-in').classList.remove('hidden');
+  $('signed-email').textContent=data.user?.email||'Сімейний обліковий запис';
+  $('auth-status').textContent='Вхід виконано.';showStatus('Спільна база підключена. Оберіть учасника.');
+ }catch(err){session=null;$('auth-status').textContent='Помилка входу: '+err.message}
+ finally{$('login').disabled=false}
+});
+$('logout').addEventListener('click',()=>{
+ session=null;remoteAnswers={};revisions={};$('logged-in').classList.add('hidden');$('login-fields').classList.remove('hidden');
+ $('person').value='';render();showStatus('Ви вийшли із сімейного облікового запису.');$('auth-status').textContent='';
+});
+$('refresh').addEventListener('click',async()=>{
+ try{await readAll();showStatus('Отримано актуальні відповіді.')}catch(err){showStatus('Не вдалося оновити: '+err.message)}
+});
+enableUI(false);
 </script></body></html>
