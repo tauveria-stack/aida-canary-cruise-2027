@@ -22,15 +22,14 @@ revoke all on public.family_answers from authenticated;
 
 -- Each invite is a 32-byte random secret, stored ONLY as a SHA-256 hash.
 -- These tokens are returned ONLY to the SQL Editor operator on initial creation.
+-- Execute this setup and token creation using a trusted SQL Editor admin role.
+-- Function execution is explicitly revoked from public/anon/authenticated.
 create or replace function public.create_family_invites()
 returns table(person_id text, invitation_token text)
 language plpgsql security definer set search_path = ''
 as $$
 declare p text; secret text;
 begin
- if current_user not in ('postgres','supabase_admin') then
-   raise exception 'Admin only';
- end if;
  foreach p in array array['volodymyr','yevheniia','valerii','tymofii'] loop
   if not exists(select 1 from public.family_invites i where i.person_id=p) then
    secret:=encode(extensions.gen_random_bytes(32),'hex');
@@ -80,8 +79,8 @@ begin
   where x.key not in ('gran','whale')
   or jsonb_typeof(x.value)<>'object'
   or pg_catalog.length(coalesce(x.value->>'comment',''))>1500
-  or (x.key='gran' and x.value->>'choice' not in ('mountains','dunes','unsure'))
-  or (x.key='whale' and x.value->>'choice' not in ('yes','maybe','no'))
+  or (x.key='gran' and coalesce(x.value->>'choice','') not in ('mountains','dunes','unsure'))
+  or (x.key='whale' and coalesce(x.value->>'choice','') not in ('yes','maybe','no'))
  ) then raise exception 'Invalid votes'; end if;
  update public.family_answers set interests=p_interests,votes=p_votes,
  revision=revision+1,updated_at=now()
