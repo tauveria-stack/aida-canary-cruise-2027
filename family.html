@@ -5,13 +5,9 @@
 </style></head><body>
 <header><div><a href="index.html" style="color:#c5f0f0">← До путівника</a><h1>Сімейний вибір</h1><p>Інтереси, маршрутні розвилки та нові ідеї для подорожі</p></div></header>
 <main class="shell">
-<div class="warning" role="status" id="sync-banner">Увійдіть у сімейний обліковий запис, щоб бачити спільні відповіді з різних пристроїв.</div>
-<section class="card" id="auth-card"><h2>Сімейний вхід</h2><p class="muted">Один спільний обліковий запис для чотирьох учасників. Пароль не записується у код сайту.</p>
-<div id="login-fields"><label for="family-email">Електронна адреса</label><input id="family-email" type="email" autocomplete="username" style="width:100%;padding:12px;margin:7px 0 12px;border:1px solid #b8cbd4;border-radius:10px">
-<label for="family-password">Пароль</label><input id="family-password" type="password" autocomplete="current-password" style="width:100%;padding:12px;margin:7px 0 12px;border:1px solid #b8cbd4;border-radius:10px"><button class="primary" type="button" id="login">Увійти</button></div>
-<div id="logged-in" class="hidden"><span id="signed-email"></span> <button type="button" id="logout">Вийти</button> <button type="button" id="refresh">Оновити відповіді</button></div>
-<p class="status" id="auth-status" aria-live="polite"></p></section>
-<section class="card"><h2>Хто зараз користується сайтом?</h2><label for="person" class="muted">Оберіть себе. На спільному пристрої можна змінити користувача.</label><div class="spacer"></div><select id="person"><option value="">Оберіть учасника</option><option value="volodymyr">Володимир</option><option value="yevheniia">Євгенія</option><option value="valerii">Валерій</option><option value="tymofii">Тимофій</option></select></section>
+<div class="warning" id="sync-banner" role="status">Відкрийте персональне запрошення, щоб заповнити анкету без логіна та пароля.</div>
+<section class="card hidden" id="invite-help"><h2>Персональне запрошення</h2><p>Попросіть організатора подорожі надіслати вам особисте посилання. Реєстрація не потрібна.</p></section>
+<section class="card"><h2>Хто зараз користується сайтом?</h2><label for="person" class="muted">Оберіть себе. На спільному пристрої можна змінити користувача.</label><div class="spacer"></div><select id="person" disabled><option value="">Оберіть учасника</option><option value="volodymyr">Володимир</option><option value="yevheniia">Євгенія</option><option value="valerii">Валерій</option><option value="tymofii">Тимофій</option></select></section>
 <div id="workspace" class="hidden">
 <section class="card"><h2>Мої туристичні інтереси</h2><p class="muted">Для кожного пункту оберіть рівень інтересу. Можна змінювати будь-коли; пропущене питання не означає «нецікаво».</p><div id="interests"></div><p class="status" id="interest-status" aria-live="polite"></p></section>
 <section class="card"><h2>Гран-Канарія · сімейна розвилка</h2><p class="muted">Демонстраційне голосування. Вибір не змінює затверджений маршрут.</p><div id="gran-votes"></div><label for="gran-comment"><strong>Чому цей варіант? Що для тебе важливо?</strong></label><textarea id="gran-comment" maxlength="1500" placeholder="Наприклад: хочу побачити панораму, але не люблю довгі переїзди"></textarea><div class="spacer"></div><button class="primary" id="save-gran">Зберегти голос і коментар</button><p class="status" id="gran-status" aria-live="polite"></p></section>
@@ -24,59 +20,29 @@ const PEOPLE=['volodymyr','yevheniia','valerii','tymofii'];
 const CATEGORIES=[['nature','🌿 Природа'],['panorama','🌄 Панорами та оглядові майданчики'],['mountains','⛰️ Гори та вулкани'],['rural','🌾 Сільські пейзажі'],['seascape','🌊 Морські пейзажі'],['beach','🏖️ Пляжний відпочинок'],['animals','🦜 Тварини та зоопарки'],['whales','🐋 Кити й дельфіни'],['waterparks','💦 Аквапарки'],['rides','🎢 Атракціони'],['cable','🚠 Канатні дороги'],['museums','🏛️ Музеї та історія'],['towns','🏘️ Атмосферні міста й села'],['food','🍽️ Гастрономія'],['quiet','🌿 Тихий відпочинок'],['active','🥾 Активний відпочинок'],['walking','🚶 Прогулянки та походи'],['boat','⛵ Морські екскурсії']];
 const QUESTIONS={gran:[['mountains','Гори: Вегета → Терор → Піко-де-лас-Ньєвес'],['dunes','Дюни: Вегета → Маспаломас'],['unsure','Поки не визначився / визначилася']],whale:[['yes','Так, хочу спостерігати за китами'],['maybe','Можливо, залежить від часу та вартості'],['no','Ні, краще інша активність']]};
 const $=id=>document.getElementById(id),key=id=>'aida-family-prototype-v1:'+id;
-let person='';
+let person='',inviteToken='',revision=0,answers={interests:{},votes:{}},saving=false,pending=null,dirty=false;
 const SB_URL='https://mnuzruqhpkjoknjsgwaz.supabase.co';
 const SB_KEY='sb_publishable_T9WOLw4msTIvWCZYDmIWhQ_dRwwOzJN';
-let session=null,remoteAnswers={},revisions={},pending={},busy={};
 const empty=()=>({interests:{},votes:{}});
-function load(){if(!person)return empty();return remoteAnswers[person]||empty()}
-function showStatus(msg){$('sync-banner').textContent=msg}
-function enableUI(on){$('workspace').classList.toggle('hidden',!on||!person);$('person').disabled=!on}
-async function request(path,{method='GET',body,token}={}){
- const headers={'apikey':SB_KEY,'Content-Type':'application/json','Prefer':'return=representation'};
- if(token||session?.access_token)headers.Authorization='Bearer '+(token||session.access_token);
- const res=await fetch(SB_URL+path,{method,headers,body:body===undefined?undefined:JSON.stringify(body),cache:'no-store'});
- const raw=await res.text();let data;try{data=raw?JSON.parse(raw):null}catch{data=null}
- if(!res.ok)throw Error(data?.msg||data?.message||data?.error_description||data?.error||'Помилка сервера: '+res.status);
- return {data,res};
+function load(){return answers}
+function showStatus(message){$('sync-banner').textContent=message}
+async function rpc(name,body){
+ const response=await fetch(SB_URL+'/rest/v1/rpc/'+name,{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'},body:JSON.stringify(body),cache:'no-store'});
+ const data=await response.json().catch(()=>({}));
+ if(!response.ok)throw Error(data.message||data.error||'Сервер недоступний ('+response.status+')');
+ return data;
 }
-async function accessToken(){
- if(!session)throw Error('Спочатку увійдіть');
- if(Date.now()<session.expires_at-60000)return session.access_token;
- const {data}=await request('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:session.refresh_token},token:SB_KEY});
- session={...data,expires_at:Date.now()+data.expires_in*1000};
- return session.access_token;
-}
-async function readAll(){
- const token=await accessToken();
- const {data}=await request('/rest/v1/family_answers?select=person_id,interests,votes,revision,updated_at',{token});
- remoteAnswers={};revisions={};
- for(const row of data){remoteAnswers[row.person_id]={interests:row.interests||{},votes:row.votes||{}};revisions[row.person_id]=row.revision}
- render();
-}
-function save(d){
- if(!session)return;
- const id=person;remoteAnswers[id]=d;
- clearTimeout(pending[id]);
- pending[id]=setTimeout(()=>sync(id),550);
- showStatus('Зберігаємо відповідь…');
-}
-async function sync(id){
- if(busy[id]){clearTimeout(pending[id]);pending[id]=setTimeout(()=>sync(id),700);return}
- busy[id]=true;
- const snapshot=JSON.stringify(remoteAnswers[id]||empty()),d=JSON.parse(snapshot);
+function save(d){answers=d;dirty=true;clearTimeout(pending);pending=setTimeout(sync,700);showStatus('Зберігаємо відповідь…')}
+async function sync(){
+ if(saving){pending=setTimeout(sync,800);return}
+ saving=true;const snapshot=JSON.stringify(answers);
  try{
-  const token=await accessToken();let result;
-  if(revisions[id]){
-   result=await request('/rest/v1/family_answers?person_id=eq.'+encodeURIComponent(id)+'&revision=eq.'+revisions[id]+'&select=revision',{method:'PATCH',token,body:{interests:d.interests,votes:d.votes,revision:revisions[id]+1,updated_at:new Date().toISOString()}});
-   if(!result.data?.length)throw Error('Інший пристрій змінив відповіді. Оновіть сторінку, щоб не втратити зміни.');
-  }else{
-   result=await request('/rest/v1/family_answers?select=revision',{method:'POST',token,body:{person_id:id,interests:d.interests,votes:d.votes,revision:1,updated_at:new Date().toISOString()}});
-  }
-  revisions[id]=result.data[0].revision;
-  showStatus('Відповіді збережено у спільній базі.');
- }catch(err){showStatus('Не збережено на сервері: '+err.message+' Не закривайте сторінку; спробуйте оновити відповіді.')}
- finally{busy[id]=false;if(JSON.stringify(remoteAnswers[id])!==snapshot){clearTimeout(pending[id]);pending[id]=setTimeout(()=>sync(id),650)}}
+  const result=await rpc('family_write',{p_token:inviteToken,p_interests:answers.interests,p_votes:answers.votes,p_revision:revision});
+  revision=result.revision;
+  if(JSON.stringify(answers)===snapshot){dirty=false;showStatus('Відповіді збережено. Дякуємо!')}
+  else {pending=setTimeout(sync,600)}
+ }catch(err){showStatus('Не вдалося зберегти: '+err.message+'. Не закривайте сторінку.');}
+ finally{saving=false}
 }
 function renderInterests(){
  const d=load(),root=$('interests');root.replaceChildren();
@@ -85,48 +51,43 @@ function renderInterests(){
   const title=document.createElement('strong');title.textContent=name;block.append(title);
   const row=document.createElement('div');row.className='row';
   for(const [v,label] of [[0,'Нецікаво'],[1,'Цікаво'],[2,'Дуже!']]){
-   const b=document.createElement('button');b.type='button';b.textContent=label;b.className=d.interests[id]===v?'active':'';
-   b.setAttribute('aria-pressed',String(d.interests[id]===v));
-   b.addEventListener('click',()=>{const next=structuredClone(load());next.interests[id]=v;save(next);renderInterests();$('interest-status').textContent='Відповідь вибрано.'});row.append(b);
+   const button=document.createElement('button');button.type='button';button.textContent=label;
+   button.className=d.interests[id]===v?'active':'';
+   button.setAttribute('aria-pressed',String(d.interests[id]===v));
+   button.addEventListener('click',()=>{const next=structuredClone(load());next.interests[id]=v;save(next);renderInterests();$('interest-status').textContent='Відповідь вибрано.'});row.append(button);
   }block.append(row);root.append(block);
  }
 }
 function renderQuestion(id){
  const d=load(),root=$(id+'-votes');root.replaceChildren();
  for(const [v,label] of QUESTIONS[id]){
-  const box=document.createElement('div');box.className='vote';const l=document.createElement('label');
+  const box=document.createElement('div');box.className='vote';const labelEl=document.createElement('label');
   const radio=document.createElement('input');radio.type='radio';radio.name=id+'-choice';radio.value=v;radio.checked=d.votes[id]?.choice===v;
-  l.append(radio,document.createTextNode(label));box.append(l);root.append(box);
+  labelEl.append(radio,document.createTextNode(label));box.append(labelEl);root.append(box);
  }
  $(id+'-comment').value=d.votes[id]?.comment||'';
  $(id+'-status').textContent=d.votes[id]?.updatedAt?'Остання відповідь: '+new Date(d.votes[id].updatedAt).toLocaleString('uk-UA'):'';
 }
-function render(){person=$('person').value;enableUI(!!session);if(!person||!session)return;renderInterests();renderQuestion('gran');renderQuestion('whale')}
-$('person').addEventListener('change',render);
+function render(){ $('workspace').classList.toggle('hidden',!person);if(!person)return;renderInterests();renderQuestion('gran');renderQuestion('whale') }
 for(const id of Object.keys(QUESTIONS))$('save-'+id).addEventListener('click',()=>{
  const selected=document.querySelector('input[name="'+id+'-choice"]:checked');
  if(!selected){$(id+'-status').textContent='Спочатку оберіть відповідь.';return}
  const d=structuredClone(load());d.votes[id]={choice:selected.value,comment:$(id+'-comment').value.trim(),updatedAt:new Date().toISOString()};
  save(d);$(id+'-status').textContent='Зберігаємо…';
 });
-$('login').addEventListener('click',async()=>{
- $('login').disabled=true;$('auth-status').textContent='Виконуємо вхід…';
+async function init(){
+ const params=new URLSearchParams(location.hash.slice(1));
+ const token=params.get('invite')||'';
+ if(!/^[0-9a-f]{64}$/.test(token)){$('invite-help').classList.remove('hidden');return}
+ inviteToken=token;
  try{
-  const {data}=await request('/auth/v1/token?grant_type=password',{method:'POST',body:{email:$('family-email').value.trim(),password:$('family-password').value},token:SB_KEY});
-  session={...data,expires_at:Date.now()+data.expires_in*1000};
-  $('family-password').value='';await readAll();
-  $('login-fields').classList.add('hidden');$('logged-in').classList.remove('hidden');
-  $('signed-email').textContent=data.user?.email||'Сімейний обліковий запис';
-  $('auth-status').textContent='Вхід виконано.';showStatus('Спільна база підключена. Оберіть учасника.');
- }catch(err){session=null;$('auth-status').textContent='Помилка входу: '+err.message}
- finally{$('login').disabled=false}
-});
-$('logout').addEventListener('click',()=>{
- session=null;remoteAnswers={};revisions={};$('logged-in').classList.add('hidden');$('login-fields').classList.remove('hidden');
- $('person').value='';render();showStatus('Ви вийшли із сімейного облікового запису.');$('auth-status').textContent='';
-});
-$('refresh').addEventListener('click',async()=>{
- try{await readAll();showStatus('Отримано актуальні відповіді.')}catch(err){showStatus('Не вдалося оновити: '+err.message)}
-});
-enableUI(false);
+  const data=await rpc('family_read',{p_token:inviteToken});
+  if(!PEOPLE.includes(data.person))throw Error('Невідомий учасник');
+  person=data.person;revision=data.revision;answers={interests:data.interests||{},votes:data.votes||{}};
+  $('person').value=person;render();
+  showStatus('Вітаємо! Ваша персональна анкета готова. Відповіді зберігаються автоматично.');
+ }catch(err){inviteToken='';$('invite-help').classList.remove('hidden');showStatus('Запрошення недійсне або база ще не налаштована: '+err.message)}
+}
+window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue=''}});
+init();
 </script></body></html>
