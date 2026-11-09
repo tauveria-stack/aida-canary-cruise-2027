@@ -1,124 +1,407 @@
 <!doctype html>
-<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Сімейний вибір · AIDAcosma 2027</title>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102a43">
+<title>Сімейне опитування · AIDAcosma 2027</title>
 <style>
-:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#17324a;background:#f2f6f8}*{box-sizing:border-box}body{margin:0}.shell{max-width:820px;margin:auto;padding:18px}header{background:linear-gradient(120deg,#102a43,#147d83);color:white;padding:24px 18px}header>div{max-width:820px;margin:auto}h1{font-size:clamp(24px,5vw,36px);margin:8px 0}h2{font-size:21px;margin:0 0 12px}p{line-height:1.5}.card{background:white;border:1px solid #d9e5eb;border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 2px 12px #102a4308}.muted{color:#52697b;font-size:14px}.warning{background:#fff7e6;border:1px solid #e5bd6b;border-radius:12px;padding:12px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.btn,button,select,textarea{font:inherit}button,.btn{border:1px solid #b8cbd4;background:white;color:#17324a;border-radius:10px;padding:10px 13px;cursor:pointer;text-decoration:none;font-weight:600}button.active,button.primary{background:#126d76;color:white;border-color:#126d76}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f0a33a}button[disabled]{opacity:.5}select,textarea{width:100%;border:1px solid #b8cbd4;border-radius:10px;padding:12px;background:white}textarea{min-height:95px}.interest{padding:13px 0;border-bottom:1px solid #e5edf1}.interest:last-child{border:0}.interest strong{display:block;margin-bottom:8px}.interest .row button{flex:1;min-width:82px;font-size:13px}.chip{font-size:12px;border-radius:20px;background:#e7f4f4;padding:5px 9px}.hidden{display:none!important}.vote{padding:12px;border:1px solid #dce7ed;border-radius:12px;margin:9px 0}.vote label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}.vote input{margin-top:5px;accent-color:#126d76}.status{font-size:13px;color:#52697b}a{color:#126d76}.spacer{height:8px}@media(max-width:480px){.shell{padding:12px}.card{padding:14px}.interest .row button{min-width:70px;padding:9px 4px}} 
-</style></head><body>
-<header><div><a href="index.html" style="color:#c5f0f0">← До путівника</a><h1>Сімейний вибір</h1><p>Інтереси, маршрутні розвилки та нові ідеї для подорожі</p></div></header>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17324a;background:#f2f6f8}
+*{box-sizing:border-box}
+body{margin:0}
+header{background:linear-gradient(120deg,#102a43,#147d83);color:#fff;padding:22px 18px}
+header>div,.shell{max-width:820px;margin:0 auto}
+header>div{padding:0 4px}
+header a{color:#c5f0f0}
+h1{font-size:clamp(25px,5vw,36px);line-height:1.18;margin:12px 0}
+h2{font-size:21px;margin:0 0 10px}
+p{line-height:1.5}
+.shell{padding:16px}
+.card{background:#fff;border:1px solid #d9e5eb;border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 2px 12px #102a4308}
+.muted{color:#52697b;font-size:14px}
+.notice{background:#fff7e6;border:1px solid #e5bd6b;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5}
+.people-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+button,textarea{font:inherit}
+button{border:1px solid #b8cbd4;background:#fff;color:#17324a;border-radius:12px;padding:12px 15px;cursor:pointer;font-weight:650}
+button:focus-visible,textarea:focus-visible{outline:3px solid #f0a33a;outline-offset:2px}
+button:disabled{opacity:.55;cursor:wait}
+.person-button{min-height:76px;font-size:clamp(18px,4vw,22px);border-color:#bfd5dc;background:#f8fbfc}
+.person-button:hover,.person-button[aria-pressed=true]{background:#e5f4f2;border-color:#147d83}
+.profile-bar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.profile-bar h2{margin:0}
+.change-button{white-space:nowrap;font-size:14px}
+.status{font-size:14px;color:#36596d;margin:10px 0 0}
+.status.error{color:#9a3f28}
+.hidden{display:none!important}
+.interest{padding:13px 0;border-bottom:1px solid #e5edf1}
+.interest:last-child{border:0}
+.interest strong{display:block;margin-bottom:8px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.interest .row button{flex:1;min-width:92px;font-size:14px}
+.interest .row button.active{background:#126d76;color:#fff;border-color:#126d76}
+.vote{padding:12px;border:1px solid #dce7ed;border-radius:12px;margin:9px 0}
+.vote label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;line-height:1.45}
+.vote input{margin-top:5px;accent-color:#126d76}
+textarea{width:100%;min-height:90px;border:1px solid #b8cbd4;border-radius:10px;padding:12px;background:#fff}
+.save-vote{background:#126d76;color:#fff;border-color:#126d76;margin-top:10px}
+.save-vote:active{transform:translateY(1px)}
+.retry-button{margin-top:10px}
+.spacer{height:8px}
+@media(max-width:480px){
+ header{padding:18px 14px}
+ .shell{padding:10px}
+ .card{padding:14px;margin:11px 0}
+ .people-grid{gap:9px}
+ .person-button{min-height:68px;padding:10px}
+ .profile-bar{align-items:flex-start;flex-direction:column}
+ .change-button{width:100%}
+ .interest .row{gap:6px}
+ .interest .row button{min-width:0;padding:10px 6px;font-size:13px}
+}
+</style>
+</head>
+<body>
+<header><div><a href="index.html">← До путівника</a><h1>Сімейне опитування AIDAcosma 2027</h1></div></header>
 <main class="shell">
-<div class="warning" id="sync-banner" role="status">Відкрийте персональне запрошення, щоб заповнити анкету без логіна та пароля.</div>
-<section class="card hidden" id="invite-help"><h2>Персональне запрошення</h2><p>Попросіть організатора подорожі надіслати вам особисте посилання. Реєстрація не потрібна.</p></section>
-<section class="card hidden" id="profile-card"><h2>Персональна анкета</h2><p id="profile-name"></p><button class="hidden" id="retry-sync" type="button">Спробувати зберегти ще раз</button></section>
-<div id="workspace" class="hidden">
-<section class="card"><h2>Мої туристичні інтереси</h2><p class="muted">Для кожного пункту оберіть рівень інтересу. Можна змінювати будь-коли; пропущене питання не означає «нецікаво».</p><div id="interests"></div><p class="status" id="interest-status" aria-live="polite"></p></section>
-<section class="card"><h2>Гран-Канарія · сімейна розвилка</h2><p class="muted">Демонстраційне голосування. Вибір не змінює затверджений маршрут.</p><div id="gran-votes"></div><label for="gran-comment"><strong>Чому цей варіант? Що для тебе важливо?</strong></label><textarea id="gran-comment" maxlength="1500" placeholder="Наприклад: хочу побачити панораму, але не люблю довгі переїзди"></textarea><div class="spacer"></div><button class="primary" id="save-gran">Зберегти голос і коментар</button><p class="status" id="gran-status" aria-live="polite"></p></section>
-<section class="card"><h2>🐋 Спостереження за китами</h2><p>Чи цікава така екскурсія на Тенеріфе? Це пропозиція для обговорення, а не бронювання.</p><div id="whale-votes"></div><label for="whale-comment"><strong>Побажання або умови</strong></label><textarea id="whale-comment" maxlength="1500" placeholder="Наприклад: хочу поїхати, якщо це не створить ризику запізнитися на літак"></textarea><div class="spacer"></div><button class="primary" id="save-whale">Зберегти відповідь</button><p class="status" id="whale-status" aria-live="polite"></p></section>
+<div class="notice" role="note">Це сімейне опитування без авторизації. Будь-хто, хто має посилання на сторінку, потенційно може переглядати й змінювати відповіді будь-якого профілю. Вибір імені допомагає розділити відповіді, але не підтверджує особу.</div>
 
-</div></main>
+<section class="card" id="participant-picker" aria-labelledby="picker-title">
+<h2 id="picker-title">Сімейне опитування AIDAcosma 2027. Хто сьогодні відповідає?</h2>
+<p class="muted">Оберіть своє ім’я. Відповіді кожного учасника зберігаються окремо.</p>
+<div class="people-grid" id="people-list">
+<button class="person-button" type="button" data-person="volodymyr">Володимир</button>
+<button class="person-button" type="button" data-person="yevheniia">Євгенія</button>
+<button class="person-button" type="button" data-person="valerii">Валерій</button>
+<button class="person-button" type="button" data-person="tymofii">Тимофій</button>
+</div>
+<p class="status" id="recent-profile"></p>
+</section>
+
+<section class="hidden" id="profile-view" aria-live="polite">
+<div class="card">
+<div class="profile-bar"><div><h2>Відповідає: <span id="active-person"></span></h2><p class="muted" id="profile-hint">Профіль зберігається на цьому пристрої.</p></div><button class="change-button" id="change-person" type="button">Змінити учасника</button></div>
+<p class="status" id="sync-status" role="status"></p>
+<button class="retry-button hidden" id="retry-sync" type="button">Повторити синхронізацію</button>
+</div>
+<div class="card hidden" id="load-error" role="alert"></div>
+<div id="survey-content" class="hidden">
+<section class="card"><h2>Мої туристичні інтереси</h2><p class="muted">Для кожного пункту оберіть рівень зацікавленості. Зміни зберігаються автоматично.</p><div id="interests"></div></section>
+<section class="card"><h2>Гран-Канарія · сімейна розвилка</h2><p class="muted">Це голосування для сімейного обговорення. Вибір не змінює затверджений маршрут.</p><div id="gran-votes"></div><label for="gran-comment"><strong>Чому цей варіант? Що для тебе важливо?</strong></label><textarea id="gran-comment" maxlength="1500" placeholder="Наприклад: хочу побачити панораму, але не люблю довгі переїзди"></textarea><button class="save-vote" id="save-gran" type="button">Зберегти голос і коментар</button><p class="status" id="gran-status" aria-live="polite"></p></section>
+<section class="card"><h2>🐋 Спостереження за китами</h2><p>Чи цікава така екскурсія на Тенерифе? Це пропозиція для обговорення, а не бронювання.</p><div id="whale-votes"></div><label for="whale-comment"><strong>Побажання або умови</strong></label><textarea id="whale-comment" maxlength="1500" placeholder="Наприклад: хочу поїхати, якщо це не створить ризику запізнитися на літак"></textarea><button class="save-vote" id="save-whale" type="button">Зберегти відповідь</button><p class="status" id="whale-status" aria-live="polite"></p></section>
+</div>
+</section>
+</main>
 <script>
 'use strict';
 const PEOPLE=['volodymyr','yevheniia','valerii','tymofii'];
+const NAMES={volodymyr:'Володимир',yevheniia:'Євгенія',valerii:'Валерій',tymofii:'Тимофій'};
 const CATEGORIES=[['nature','🌿 Природа'],['panorama','🌄 Панорами та оглядові майданчики'],['mountains','⛰️ Гори та вулкани'],['rural','🌾 Сільські пейзажі'],['seascape','🌊 Морські пейзажі'],['beach','🏖️ Пляжний відпочинок'],['animals','🦜 Тварини та зоопарки'],['whales','🐋 Кити й дельфіни'],['waterparks','💦 Аквапарки'],['rides','🎢 Атракціони'],['cable','🚠 Канатні дороги'],['museums','🏛️ Музеї та історія'],['towns','🏘️ Атмосферні міста й села'],['food','🍽️ Гастрономія'],['quiet','🌿 Тихий відпочинок'],['active','🥾 Активний відпочинок'],['walking','🚶 Прогулянки та походи'],['boat','⛵ Морські екскурсії']];
 const QUESTIONS={gran:[['mountains','Гори: Вегета → Терор → Піко-де-лас-Ньєвес'],['dunes','Дюни: Вегета → Маспаломас'],['unsure','Поки не визначився / визначилася']],whale:[['yes','Так, хочу спостерігати за китами'],['maybe','Можливо, залежить від часу та вартості'],['no','Ні, краще інша активність']]};
-const $=id=>document.getElementById(id);
-let person='',inviteToken='',revision=0,answers={interests:{},votes:{}},baselineAnswers={interests:{},votes:{}},saving=false,pending=null,dirty=false;
+const INTEREST_KEYS=new Set(CATEGORIES.map(([id])=>id));
+const CHOICES={gran:new Set(QUESTIONS.gran.map(([id])=>id)),whale:new Set(QUESTIONS.whale.map(([id])=>id))};
+const STORAGE_KEY='aida-family-survey-v2';
 const SB_URL='https://mnuzruqhpkjoknjsgwaz.supabase.co';
+// Supabase publishable/anon key; intentionally public. Never put service_role or other admin keys here.
 const SB_KEY='sb_publishable_T9WOLw4msTIvWCZYDmIWhQ_dRwwOzJN';
-function load(){return answers}
-function showStatus(message){$('sync-banner').textContent=message}
-async function rpc(name,body){
- const response=await fetch(SB_URL+'/rest/v1/rpc/'+name,{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'},body:JSON.stringify(body),cache:'no-store'});
- const data=await response.json().catch(()=>({}));
- if(!response.ok)throw Error(data.message||data.error||'Сервер недоступний ('+response.status+')');
- return data;
+const $=id=>document.getElementById(id);
+let activePerson='';
+let lastPerson='';
+let profiles=Object.fromEntries(PEOPLE.map(id=>[id,newProfile()]));
+let storageAvailable=true;
+
+function emptyAnswers(){return {interests:{},votes:{}}}
+function emptyDraftVotes(){return {gran:{choice:'',comment:''},whale:{choice:'',comment:''}}}
+function newProfile(){return {data:emptyAnswers(),baseline:emptyAnswers(),revision:0,loaded:false,dirty:false,draftVotes:emptyDraftVotes(),draftDirty:false,loading:false,saving:false,error:'',offline:false,blockedConflict:false,conflicts:[],timer:null}}
+function own(obj,key){return Object.prototype.hasOwnProperty.call(obj,key)}
+function stable(value){if(value===undefined)return 'undefined';if(value===null||typeof value!=='object')return JSON.stringify(value);if(Array.isArray(value))return '['+value.map(stable).join(',')+']';return '{'+Object.keys(value).sort().map(k=>JSON.stringify(k)+':'+stable(value[k])).join(',')+'}'}
+function sameEntry(a,ak,b,bk){return ak===bk&&(!ak||stable(a)===stable(b))}
+function sameAnswers(a,b){return stable(a)===stable(b)}
+function cleanAnswers(raw){
+ const result=emptyAnswers();
+ if(!raw||typeof raw!=='object'||Array.isArray(raw))return result;
+ if(raw.interests&&typeof raw.interests==='object'&&!Array.isArray(raw.interests)){
+  for(const [key,value] of Object.entries(raw.interests))if(INTEREST_KEYS.has(key)&&Number.isInteger(value)&&[0,1,2].includes(value))result.interests[key]=value;
+ }
+ if(raw.votes&&typeof raw.votes==='object'&&!Array.isArray(raw.votes)){
+  for(const key of Object.keys(QUESTIONS)){
+   const value=raw.votes[key];
+   if(!value||typeof value!=='object'||Array.isArray(value)||!CHOICES[key].has(value.choice)||typeof value.comment!=='string'||value.comment.length>1500)continue;
+   const vote={choice:value.choice,comment:value.comment};
+   if(typeof value.updatedAt==='string'&&value.updatedAt.length<=80)vote.updatedAt=value.updatedAt;
+   result.votes[key]=vote;
+  }
+ }
+ return result;
 }
-function save(d){answers=d;dirty=true;clearTimeout(pending);pending=setTimeout(sync,700);showStatus('Зберігаємо відповідь…')}
-function same(a,b){if(Object.is(a,b))return true;if(!a||!b||typeof a!=='object'||typeof b!=='object')return false;const ak=Object.keys(a).sort(),bk=Object.keys(b).sort();return ak.length===bk.length&&ak.every((k,i)=>k===bk[i]&&same(a[k],b[k]))}
+function cleanDrafts(raw, fallback){
+ const result=emptyDraftVotes();
+ for(const key of Object.keys(QUESTIONS)){
+  const source=raw&&raw[key]&&typeof raw[key]==='object'?raw[key]:null;
+  const stored=fallback&&fallback[key];
+  const choice=source&&CHOICES[key].has(source.choice)?source.choice:(stored&&CHOICES[key].has(stored.choice)?stored.choice:'');
+  const comment=source&&typeof source.comment==='string'?source.comment.slice(0,1500):(stored&&typeof stored.comment==='string'?stored.comment:'');
+  result[key]={choice,comment};
+ }
+ return result;
+}
+function draftMatchesData(drafts,data){
+ for(const key of Object.keys(QUESTIONS)){
+  const vote=data.votes[key]||{choice:'',comment:''};
+  if(drafts[key].choice!==vote.choice||drafts[key].comment!==vote.comment)return false;
+ }
+ return true;
+}
+function readLocalState(){
+ try{
+  const raw=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
+  if(!raw||raw.version!==2||!raw.profiles||typeof raw.profiles!=='object')return;
+  if(PEOPLE.includes(raw.lastPerson))lastPerson=raw.lastPerson;
+  for(const id of PEOPLE){
+   const saved=raw.profiles[id];
+   if(!saved||typeof saved!=='object')continue;
+   const p=profiles[id];
+   p.data=cleanAnswers(saved.data);
+   p.baseline=cleanAnswers(saved.baseline);
+   p.revision=Number.isInteger(saved.revision)&&saved.revision>=1?saved.revision:0;
+   p.loaded=Boolean(saved.loaded&&p.revision>0);
+   p.dirty=p.loaded&&!sameAnswers(p.data,p.baseline);
+   p.draftVotes=cleanDrafts(saved.draftVotes,p.data.votes);
+   p.draftDirty=!draftMatchesData(p.draftVotes,p.data);
+  }
+ }catch(_){storageAvailable=false}
+}
+function persist(){
+ try{
+  const saved={version:2,lastPerson,profiles:{}};
+  for(const id of PEOPLE){
+   const p=profiles[id];
+   saved.profiles[id]={data:p.data,baseline:p.baseline,revision:p.revision,loaded:p.loaded,draftVotes:p.draftVotes};
+  }
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));
+ }catch(_){storageAvailable=false}
+}
+function updateDirty(p){p.dirty=!sameAnswers(p.data,p.baseline);p.draftDirty=!draftMatchesData(p.draftVotes,p.data)}
 function mergeLocalChanges(local,base,remote){
- const merged=structuredClone(remote);
+ const merged=cleanAnswers(remote),conflicts=[];
  for(const section of ['interests','votes']){
   const keys=new Set([...Object.keys(base[section]||{}),...Object.keys(local[section]||{})]);
   for(const key of keys){
-   const had=Object.prototype.hasOwnProperty.call(base[section]||{},key);
-   const has=Object.prototype.hasOwnProperty.call(local[section]||{},key);
-   if(had!==has||!same((base[section]||{})[key],(local[section]||{})[key])){
-    if(has)merged[section][key]=local[section][key];else delete merged[section][key];
-   }
+   const baseHas=own(base[section]||{},key),localHas=own(local[section]||{},key),remoteHas=own(remote[section]||{},key);
+   const localChanged=!sameEntry((base[section]||{})[key],baseHas,(local[section]||{})[key],localHas);
+   if(!localChanged)continue;
+   const remoteChanged=!sameEntry((base[section]||{})[key],baseHas,(remote[section]||{})[key],remoteHas);
+   if(remoteChanged&&!sameEntry((local[section]||{})[key],localHas,(remote[section]||{})[key],remoteHas))conflicts.push(section+':'+key);
+   if(localHas)merged[section][key]=local[section][key];else delete merged[section][key];
   }
  }
- return merged;
+ return {merged,conflicts};
 }
-async function sync(){
- if(saving){pending=setTimeout(sync,800);return}
- saving=true;$('retry-sync').classList.add('hidden');
- try{
-  let conflicts=0;
-  while(conflicts<3){
-   const snapshot=structuredClone(answers),base=structuredClone(baselineAnswers);
-   try{
-    const result=await rpc('family_write',{p_token:inviteToken,p_interests:snapshot.interests,p_votes:snapshot.votes,p_revision:revision});
-    revision=result.revision;baselineAnswers=snapshot;
-    if(same(answers,snapshot)){dirty=false;showStatus(conflicts?'Паралельні зміни об’єднано й збережено.':'Відповіді збережено. Дякуємо!');clearTimeout(pending);pending=null;return}
-   }catch(err){
-    if(!String(err.message).toLowerCase().includes('conflict'))throw err;
-    const remoteData=await rpc('family_read',{p_token:inviteToken});
-    const remote={interests:remoteData.interests||{},votes:remoteData.votes||{}};
-    const drafts=Object.fromEntries(['gran','whale'].map(id=>[id,{choice:document.querySelector('input[name="'+id+'-choice"]:checked')?.value||'',comment:$(id+'-comment').value}]));
-    answers=mergeLocalChanges(answers,base,remote);baselineAnswers=structuredClone(remote);revision=remoteData.revision;conflicts++;
-    render();
-    for(const id of Object.keys(drafts)){if(drafts[id].choice){const radio=document.querySelector('input[name="'+id+'-choice"][value="'+drafts[id].choice+'"]');if(radio)radio.checked=true}$(id+'-comment').value=drafts[id].comment}
-    if(same(answers,remote)){dirty=false;showStatus('На сервері вже є новіша версія; вона завантажена.');clearTimeout(pending);pending=null;return}
-   }
-  }
-  throw Error('Відповіді часто змінюються з іншого пристрою. Натисніть повторне збереження.');
- }catch(err){dirty=true;showStatus('Не вдалося зберегти: '+err.message+'. Ваші зміни залишилися на сторінці.');$('retry-sync').classList.remove('hidden')}
- finally{saving=false}
+function profileStatus(p){
+ if(p.loading&&!p.loaded)return 'Завантажую попередні відповіді…';
+ if(p.saving)return 'Зберігаю зміни в Supabase…';
+ if(p.blockedConflict)return 'Інший пристрій змінив ті самі відповіді: '+p.conflicts.map(x=>x.split(':')[1]).join(', ')+'. Ваші зміни залишені локально; перевірте їх і підтвердьте повторне збереження.';
+ if(p.error&&p.loaded)return 'Не вдалося синхронізувати: '+p.error+'. Чернетка збережена на цьому пристрої.';
+ if(p.error&&!p.loaded)return 'Не вдалося завантажити відповіді: '+p.error+'. Поки дані не завантажені, редагування вимкнене.';
+ if(p.loading)return 'Оновлюю дані з Supabase; локальні зміни залишаються доступними.';
+ if(p.dirty)return 'Зберігаю відповіді…';
+ if(p.draftDirty)return 'Голос або коментар є локальною чернеткою. Натисніть кнопку збереження під запитанням.';
+ if(p.loaded)return 'Відповіді синхронізовано. Зміна учасника не видаляє чернетки інших профілів.';
+ return 'Завантажую відповіді…';
 }
-$('retry-sync').addEventListener('click',sync);
+function renderStatus(){
+ if(!activePerson)return;
+ const p=profiles[activePerson],line=$('sync-status');
+ line.textContent=profileStatus(p);
+ line.classList.toggle('error',Boolean(p.error||p.blockedConflict));
+ const retry=$('retry-sync');
+ retry.classList.toggle('hidden',!(p.error||p.blockedConflict||p.dirty));
+ if(p.blockedConflict)retry.textContent='Підтвердити мою версію й зберегти';
+ else if(p.error)retry.textContent='Повторити синхронізацію';
+ else retry.textContent='Зберегти зараз';
+ $('profile-hint').textContent=storageAvailable?'Оберіть «Змінити учасника», щоб перейти до іншого профілю. Незбережені чернетки зберігаються окремо.':'Локальне сховище браузера недоступне; не закривайте сторінку, доки відповіді не синхронізовано.';
+}
 function renderInterests(){
- const d=load(),root=$('interests');root.replaceChildren();
- for(const [id,name] of CATEGORIES){
+ if(!activePerson)return;
+ const p=profiles[activePerson],root=$('interests');
+ root.replaceChildren();
+ for(const [id,label] of CATEGORIES){
   const block=document.createElement('div');block.className='interest';
-  const title=document.createElement('strong');title.textContent=name;block.append(title);
+  const title=document.createElement('strong');title.textContent=label;block.append(title);
   const row=document.createElement('div');row.className='row';
-  for(const [v,label] of [[0,'Нецікаво'],[1,'Цікаво'],[2,'Дуже!']]){
-   const button=document.createElement('button');button.type='button';button.textContent=label;
-   button.className=d.interests[id]===v?'active':'';
-   button.setAttribute('aria-pressed',String(d.interests[id]===v));
-   button.addEventListener('click',()=>{const next=structuredClone(load());next.interests[id]=v;save(next);renderInterests();$('interest-status').textContent='Відповідь вибрано.'});row.append(button);
-  }block.append(row);root.append(block);
+  for(const [value,text] of [[0,'Нецікаво'],[1,'Цікаво'],[2,'Дуже!']]){
+   const button=document.createElement('button');button.type='button';button.textContent=text;
+   button.className=p.data.interests[id]===value?'active':'';
+   button.setAttribute('aria-pressed',String(p.data.interests[id]===value));
+   button.addEventListener('click',()=>{
+    if(!p.loaded)return;
+    p.data.interests[id]=value;updateDirty(p);p.error='';p.offline=false;persist();renderInterests();renderStatus();scheduleSync(activePerson);
+   });
+   row.append(button);
+  }
+  block.append(row);root.append(block);
  }
 }
 function renderQuestion(id){
- const d=load(),root=$(id+'-votes');root.replaceChildren();
- for(const [v,label] of QUESTIONS[id]){
-  const box=document.createElement('div');box.className='vote';const labelEl=document.createElement('label');
-  const radio=document.createElement('input');radio.type='radio';radio.name=id+'-choice';radio.value=v;radio.checked=d.votes[id]?.choice===v;
+ if(!activePerson)return;
+ const p=profiles[activePerson],root=$(id+'-votes');
+ root.replaceChildren();
+ for(const [value,label] of QUESTIONS[id]){
+  const box=document.createElement('div');box.className='vote';
+  const labelEl=document.createElement('label');
+  const radio=document.createElement('input');radio.type='radio';radio.name=id+'-choice';radio.value=value;radio.checked=p.draftVotes[id].choice===value;
+  radio.addEventListener('change',()=>{p.draftVotes[id].choice=value;updateDirty(p);persist();renderStatus()});
   labelEl.append(radio,document.createTextNode(label));box.append(labelEl);root.append(box);
  }
- $(id+'-comment').value=d.votes[id]?.comment||'';
- $(id+'-status').textContent=d.votes[id]?.updatedAt?'Остання відповідь: '+new Date(d.votes[id].updatedAt).toLocaleString('uk-UA'):'';
+ $(id+'-comment').value=p.draftVotes[id].comment;
+ $(id+'-comment').oninput=event=>{p.draftVotes[id].comment=event.target.value.slice(0,1500);updateDirty(p);persist();renderStatus()};
+ $(id+'-status').textContent=p.data.votes[id]?.updatedAt?'Остання відповідь: '+new Date(p.data.votes[id].updatedAt).toLocaleString('uk-UA'):'';
 }
-function render(){ $('workspace').classList.toggle('hidden',!person);if(!person)return;renderInterests();renderQuestion('gran');renderQuestion('whale') }
-for(const id of Object.keys(QUESTIONS))$('save-'+id).addEventListener('click',()=>{
- const selected=document.querySelector('input[name="'+id+'-choice"]:checked');
- if(!selected){$(id+'-status').textContent='Спочатку оберіть відповідь.';return}
- const d=structuredClone(load());d.votes[id]={choice:selected.value,comment:$(id+'-comment').value.trim(),updatedAt:new Date().toISOString()};
- save(d);$(id+'-status').textContent='Зберігаємо…';
-});
-async function init(){
- const params=new URLSearchParams(location.hash.slice(1));
- const token=params.get('invite')||'';
- if(!/^[0-9a-f]{64}$/.test(token)){$('invite-help').classList.remove('hidden');return}
- inviteToken=token;
+function renderProfile(){
+ const picker=$('participant-picker'),view=$('profile-view');
+ picker.classList.toggle('hidden',Boolean(activePerson));view.classList.toggle('hidden',!activePerson);
+ $('recent-profile').textContent=lastPerson?'Останній вибір на цьому пристрої: '+NAMES[lastPerson]+'.':'';
+ if(!activePerson)return;
+ const p=profiles[activePerson];
+ $('active-person').textContent=NAMES[activePerson];
+ $('load-error').classList.toggle('hidden',p.loaded||!p.error);
+ $('load-error').textContent=!p.loaded&&p.error?'Анкету ще не завантажено. '+p.error+' Спробуйте повторити запит.':'';
+ $('survey-content').classList.toggle('hidden',!p.loaded);
+ if(p.loaded){renderInterests();renderQuestion('gran');renderQuestion('whale')}
+ renderStatus();
+}
+async function rpc(name,body){
+ const response=await fetch(SB_URL+'/rest/v1/rpc/'+name,{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'},body:JSON.stringify(body),cache:'no-store'});
+ const data=await response.json().catch(()=>({}));
+ if(!response.ok){
+  const message=String(data.message||data.error||'');
+  const error=new Error(message||'Сервер недоступний ('+response.status+')');
+  error.status=response.status;error.code=data.code||'';
+  throw error;
+ }
+ return data;
+}
+function friendlyError(error){
+ const message=String(error&&error.message||'');
+ if(!navigator.onLine||/failed to fetch|network|load failed/i.test(message))return 'немає з’єднання з інтернетом';
+ if(/Invalid participant/i.test(message))return 'сервер відхилив невідомий профіль';
+ if(/Invalid answers|Invalid interests|Invalid votes/i.test(message))return 'сервер не прийняв формат відповіді';
+ return message.slice(0,180)||'невідома помилка';
+}
+async function loadProfile(id){
+ if(!PEOPLE.includes(id))return;
+ const p=profiles[id];
+ if(p.loading)return;
+ p.loading=true;p.error='';if(activePerson===id)renderStatus();
  try{
-  const data=await rpc('family_read',{p_token:inviteToken});
-  if(!PEOPLE.includes(data.person))throw Error('Невідомий учасник');
-  person=data.person;revision=data.revision;answers={interests:data.interests||{},votes:data.votes||{}};baselineAnswers=structuredClone(answers);
-  const names={volodymyr:'Володимир',yevheniia:'Євгенія',valerii:'Валерій',tymofii:'Тимофій'};
-  $('profile-name').textContent=names[person];$('profile-card').classList.remove('hidden');render();
-  showStatus('Вітаємо! Ваша персональна анкета готова. Відповіді зберігаються автоматично.');
- }catch(err){inviteToken='';$('invite-help').classList.remove('hidden');showStatus('Запрошення недійсне або база ще не налаштована: '+err.message)}
+  const remoteData=await rpc('family_read_profile',{p_person_id:id});
+  if(!remoteData||remoteData.person!==id||!Number.isInteger(remoteData.revision)||remoteData.revision<1)throw new Error('Некоректна відповідь сервера');
+  const remote=cleanAnswers({interests:remoteData.interests,votes:remoteData.votes});
+  if(p.dirty){
+   const merged=mergeLocalChanges(p.data,p.baseline,remote);
+   p.data=merged.merged;p.baseline=remote;p.revision=remoteData.revision;p.conflicts=merged.conflicts;p.blockedConflict=merged.conflicts.length>0;
+  }else{
+   p.data=remote;p.baseline=cleanAnswers(remote);p.revision=remoteData.revision;p.blockedConflict=false;p.conflicts=[];
+  }
+  p.loaded=true;p.error='';p.offline=false;updateDirty(p);
+  if(!p.draftDirty)p.draftVotes=cleanDrafts(null,p.data.votes);
+ }catch(error){
+  p.error=friendlyError(error);p.offline=true;
+ }finally{
+  p.loading=false;persist();
+  if(activePerson===id)renderProfile();
+  if(p.dirty&&!p.error&&!p.blockedConflict)scheduleSync(id);
+ }
 }
-window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue=''}});
-init();
-</script></body></html>
+function chooseParticipant(id){
+ if(!PEOPLE.includes(id))return;
+ activePerson=id;lastPerson=id;persist();renderProfile();
+ const p=profiles[id];
+ if(!p.loading)void loadProfile(id);
+}
+function showPicker(){activePerson='';renderProfile();persist()}
+function scheduleSync(id){
+ const p=profiles[id];if(!p||!p.loaded)return;
+ clearTimeout(p.timer);p.timer=setTimeout(()=>void syncProfile(id),750);
+}
+function isConflict(error){return error.status===409||error.code==='40001'||/conflict/i.test(String(error.message||''))}
+async function syncProfile(id,force=false){
+ const p=profiles[id];
+ if(!p||!p.loaded||!p.dirty||p.saving||(!force&&p.blockedConflict))return;
+ clearTimeout(p.timer);p.saving=true;p.error='';renderIfActive(id);
+ let attempt=0;
+ try{
+  while(attempt<3){
+   const snapshot=cleanAnswers(p.data),base=cleanAnswers(p.baseline),revision=p.revision;
+   try{
+    const result=await rpc('family_write_profile',{p_person_id:id,p_interests:snapshot.interests,p_votes:snapshot.votes,p_revision:revision});
+    if(!result||result.saved!==true||!Number.isInteger(result.revision))throw new Error('Некоректна відповідь сервера після збереження');
+    p.revision=result.revision;p.baseline=snapshot;p.dirty=!sameAnswers(p.data,p.baseline);p.error='';p.offline=false;p.blockedConflict=false;p.conflicts=[];
+    if(!p.dirty)break;
+   }catch(error){
+    if(!isConflict(error))throw error;
+    const fresh=await rpc('family_read_profile',{p_person_id:id});
+    if(!fresh||fresh.person!==id||!Number.isInteger(fresh.revision))throw new Error('Не вдалося отримати новішу версію для злиття');
+    const remote=cleanAnswers({interests:fresh.interests,votes:fresh.votes});
+    const merged=mergeLocalChanges(p.data,base,remote);
+    p.data=merged.merged;p.baseline=remote;p.revision=fresh.revision;updateDirty(p);
+    if(merged.conflicts.length&&!force){
+     p.blockedConflict=true;p.conflicts=merged.conflicts;persist();return;
+    }
+    p.blockedConflict=false;p.conflicts=[];p.error='';p.offline=false;
+    if(!p.dirty)break;
+    force=false;attempt++;continue;
+   }
+   attempt++;
+  }
+  if(p.dirty&&!p.error&&!p.blockedConflict)p.error='Часті паралельні зміни. Залишив чернетку; повторіть синхронізацію.';
+ }catch(error){
+  p.error=friendlyError(error);p.offline=true;
+ }finally{
+  p.saving=false;updateDirty(p);persist();renderIfActive(id);
+  if(p.dirty&&!p.error&&!p.blockedConflict)scheduleSync(id);
+ }
+}
+function renderIfActive(id){if(activePerson===id){renderStatus();if(profiles[id].loaded)renderInterests()}}
+function commitVote(id){
+ if(!activePerson)return;
+ const p=profiles[activePerson],draft=p.draftVotes[id];
+ if(!CHOICES[id].has(draft.choice)){ $(id+'-status').textContent='Спочатку оберіть варіант.';return}
+ p.data.votes[id]={choice:draft.choice,comment:draft.comment.trim(),updatedAt:new Date().toISOString()};
+ p.draftVotes[id]={choice:p.data.votes[id].choice,comment:p.data.votes[id].comment};
+ updateDirty(p);p.error='';persist();$(id+'-status').textContent='Збережено локально; синхронізую…';renderStatus();scheduleSync(activePerson);
+}
+function retryCurrent(){
+ if(!activePerson)return;
+ const id=activePerson,p=profiles[id];
+ if(p.blockedConflict){void syncProfile(id,true);return}
+ if(p.dirty){void syncProfile(id);return}
+ void loadProfile(id);
+}
+for(const button of document.querySelectorAll('[data-person]'))button.addEventListener('click',()=>chooseParticipant(button.dataset.person));
+$('change-person').addEventListener('click',showPicker);
+$('retry-sync').addEventListener('click',retryCurrent);
+$('save-gran').addEventListener('click',()=>commitVote('gran'));
+$('save-whale').addEventListener('click',()=>commitVote('whale'));
+window.addEventListener('online',()=>{
+ for(const id of PEOPLE){const p=profiles[id];if(p.dirty&&!p.blockedConflict)void syncProfile(id)}
+ if(activePerson){const p=profiles[activePerson];if(!p.dirty&&!p.saving)void loadProfile(activePerson)}
+});
+// Refresh the selected profile periodically so edits made on another device
+// appear without requiring a reload. Local dirty fields are merged/conflicted
+// by loadProfile before any follow-up write.
+setInterval(()=>{
+ const p=profiles[activePerson];
+ if(activePerson&&p.loaded&&!p.loading&&!p.saving&&navigator.onLine&&!document.hidden)void loadProfile(activePerson);
+},30000);
+document.addEventListener('visibilitychange',()=>{
+ const p=profiles[activePerson];
+ if(!document.hidden&&activePerson&&p.loaded&&!p.loading&&!p.saving&&navigator.onLine)void loadProfile(activePerson);
+});
+window.addEventListener('beforeunload',event=>{
+ if(PEOPLE.some(id=>profiles[id].dirty||profiles[id].draftDirty)){event.preventDefault();event.returnValue=''}
+});
+readLocalState();
+if(lastPerson)chooseParticipant(lastPerson);else renderProfile();
+</script>
+</body>
+</html>
