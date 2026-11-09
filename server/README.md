@@ -1,14 +1,15 @@
-# Railway — тестовий сімейний API
+# Archived Railway prototype
 
-Статус: код підготовлено; Railway ще не розгорнуто, браузерну сторінку ще не підключено.
+This folder is an earlier, unused server prototype. It is not connected to the
+current `family.html` survey and should not be deployed or configured for the
+family survey.
 
-1. Створити окремий Railway service з GitHub branch audit-fixes-2026-11-06; Root Directory: /server.
-2. Додати PostgreSQL; налаштувати DATABASE_URL як Railway reference variable.
-3. Задати FAMILY_ACCESS_KEY: випадковий сімейний код щонайменше 24 символи. Не записувати його у GitHub чи публічний JavaScript.
-4. Задати ALLOWED_ORIGINS: точні HTTPS origins тестового сайту, через кому.
-5. npm start; GET /health має повернути status ok.
-6. GET /api/answers та PUT /api/answers/:person вимагають Authorization: Bearer <FAMILY_ACCESS_KEY>.
+The current survey is a static page using the public Supabase RPCs documented in
+[`SURVEY-NOTES.md`](../SURVEY-NOTES.md) and added by
+[`supabase/family_profiles.sql`](../supabase/family_profiles.sql). There is no
+participant authentication. Any visitor who can reach the page can potentially
+read and change any profile; the participant picker only separates answers.
 
-Сторінка family.html має розділ «Підключення сімейних відповідей»: введіть публічну HTTPS-адресу Railway service та сімейний код. Ключ зберігається лише в оперативній пам’яті вкладки. Змінна ALLOWED_ORIGINS повинна містити точний origin сторінки (наприклад, https://tauveria-stack.github.io); сторонній HTML preview може мати інший origin і не працювати. Для перевірки потрібне окреме тестове розгортання сторінки. API використовує revision: новий учасник надсилає revision=0, подальші записи — останню отриману revision. Конфлікт повертає HTTP 409.
-
-Обмеження: спільний код дозволяє читати і змінювати відповіді всіх учасників. Це не персональна автентифікація. Перевірку одночасного перезапису (HTTP 409) і UI для введення сімейного коду додано; перед повноцінним запуском потрібні резервні копії, сценарії відновлення після конфлікту, а також тестування на двох пристроях. Секрет у браузері не зберігати в localStorage. Не називати цей прототип готовим production-сервісом.
+Do not run `supabase/family_invites.sql` for the new flow. It and its token
+functions are legacy database objects retained until a separately planned
+cleanup. The current production page and `main` branch have not been switched.
