@@ -81,3 +81,9 @@ Useful official links:
 - https://www.hellocanaryislands.com/cruise-excursions/tenerife/whale-and-dolphin-watching-excursion/
 
 **Implementation state:** drafted but NOT committed: GitHub content-update action was blocked while replacing `family.html`. The published survey remains unchanged. Do not claim the explanations are live or ask the user to manually edit GitHub; resume via a permitted publication capability. Keep images lazy-loaded and mobile-responsive.
+
+## Published visual companion page — 2026-11-18
+
+A standalone accessible guide was published to `main/family-choices-guide.html` without replacing the survey. It explains the 2027-01-09 Gran Canaria alternatives (Vegueta in both cases, recommended Maspalomas dunes vs. Teror / Pico de las Nieves), using Wikimedia Commons images and official tourism links. It also explains 2–3-hour Tenerife whale watching, its tentative status, and shows a documented pilot-whale photo (Cayambe, CC BY-SA 3.0). Commits `d161020aebe51ea565a84916dcb896d7f6185f78` and `306981a7d858a71c49f5134ec2d0cc9319b3778e`. Direct URL: https://tauveria-stack.github.io/aida-canary-cruise-2027/family-choices-guide.html
+
+**Gap:** no inline card/link was added to `family.html`; attempts to update the existing survey HTML were rejected by the GitHub write gateway. The guide does contain links back to `family.html`. A successful Pages action is necessary before claiming the update is live. Next priority is seamless inline integration, not asking the user to copy/paste the survey source.
