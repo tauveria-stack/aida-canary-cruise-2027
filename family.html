@@ -100,7 +100,8 @@ textarea{width:100%;min-height:90px;border:1px solid #b8cbd4;border-radius:10px;
 'use strict';
 const ACCESS_SESSION_KEY='aida-family-access';
 const ACCESS_CODE='1427'; // UI-only gate; not server-side authentication.
-function unlockSurvey(){document.getElementById('access-gate').classList.add('hidden');document.getElementById('survey-app').classList.remove('hidden')}
+let surveyStarted=false;
+function unlockSurvey(){document.getElementById('access-gate').classList.add('hidden');document.getElementById('survey-app').classList.remove('hidden');if(!surveyStarted){surveyStarted=true;readLocalState();if(lastPerson)chooseParticipant(lastPerson);else renderProfile()}}
 document.getElementById('access-form').addEventListener('submit',event=>{event.preventDefault();const input=document.getElementById('access-code');if(input.value!==ACCESS_CODE){document.getElementById('access-error').textContent='Неправильний код. Спробуйте ще раз.';input.value='';input.focus();return}try{sessionStorage.setItem(ACCESS_SESSION_KEY,'ok')}catch(_){}unlockSurvey()});
 try{if(sessionStorage.getItem(ACCESS_SESSION_KEY)==='ok')unlockSurvey()}catch(_){}
 const PEOPLE=['volodymyr','yevheniia','valerii','tymofii'];
@@ -410,8 +411,6 @@ document.addEventListener('visibilitychange',()=>{
 window.addEventListener('beforeunload',event=>{
  if(PEOPLE.some(id=>profiles[id].dirty||profiles[id].draftDirty)){event.preventDefault();event.returnValue=''}
 });
-readLocalState();
-if(lastPerson)chooseParticipant(lastPerson);else renderProfile();
 </script>
 </body>
 </html>
