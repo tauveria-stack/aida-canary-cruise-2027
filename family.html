@@ -21,7 +21,11 @@ p{line-height:1.5}
 .muted{color:#52697b;font-size:14px}
 .notice{background:#fff7e6;border:1px solid #e5bd6b;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5}
 .people-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
-button,textarea{font:inherit}
+button,textarea,input{font:inherit}
+.gate{max-width:430px;margin:44px auto}
+.gate input{width:100%;padding:13px;border:1px solid #b8cbd4;border-radius:10px;margin:8px 0 12px}
+.gate button{background:#126d76;color:white;width:100%}
+.gate-error{color:#9a3f28;min-height:1.4em}
 button{border:1px solid #b8cbd4;background:#fff;color:#17324a;border-radius:12px;padding:12px 15px;cursor:pointer;font-weight:650}
 button:focus-visible,textarea:focus-visible{outline:3px solid #f0a33a;outline-offset:2px}
 button:disabled{opacity:.55;cursor:wait}
@@ -62,8 +66,9 @@ textarea{width:100%;min-height:90px;border:1px solid #b8cbd4;border-radius:10px;
 </head>
 <body>
 <header><div><a href="index.html">← До путівника</a><h1>Сімейне опитування AIDAcosma 2027</h1></div></header>
-<main class="shell">
-<div class="notice" role="note">Це сімейне опитування без авторизації. Будь-хто, хто має посилання на сторінку, потенційно може переглядати й змінювати відповіді будь-якого профілю. Вибір імені допомагає розділити відповіді, але не підтверджує особу.</div>
+<section class="shell" id="access-gate"><form class="card gate" id="access-form"><h2>Вхід до сімейної анкети</h2><p class="muted">Введіть спільний сімейний код.</p><label for="access-code">Код доступу</label><input id="access-code" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" required maxlength="16"><button type="submit">Увійти</button><p class="gate-error" id="access-error" role="alert"></p></form></section>
+<main class="shell hidden" id="survey-app">
+<div class="notice" role="note">Цей сімейний код обмежує звичайний доступ до сторінки, але не є повноцінним захистом даних. Не вводьте сюди конфіденційну інформацію. Вибір імені не підтверджує особу.</div>
 
 <section class="card" id="participant-picker" aria-labelledby="picker-title">
 <h2 id="picker-title">Сімейне опитування AIDAcosma 2027. Хто сьогодні відповідає?</h2>
@@ -93,6 +98,11 @@ textarea{width:100%;min-height:90px;border:1px solid #b8cbd4;border-radius:10px;
 </main>
 <script>
 'use strict';
+const ACCESS_SESSION_KEY='aida-family-access';
+const ACCESS_CODE='1427'; // UI-only gate; not server-side authentication.
+function unlockSurvey(){document.getElementById('access-gate').classList.add('hidden');document.getElementById('survey-app').classList.remove('hidden')}
+document.getElementById('access-form').addEventListener('submit',event=>{event.preventDefault();const input=document.getElementById('access-code');if(input.value!==ACCESS_CODE){document.getElementById('access-error').textContent='Неправильний код. Спробуйте ще раз.';input.value='';input.focus();return}try{sessionStorage.setItem(ACCESS_SESSION_KEY,'ok')}catch(_){}unlockSurvey()});
+try{if(sessionStorage.getItem(ACCESS_SESSION_KEY)==='ok')unlockSurvey()}catch(_){}
 const PEOPLE=['volodymyr','yevheniia','valerii','tymofii'];
 const NAMES={volodymyr:'Володимир',yevheniia:'Євгенія',valerii:'Валерій',tymofii:'Тимофій'};
 const CATEGORIES=[['nature','🌿 Природа'],['panorama','🌄 Панорами та оглядові майданчики'],['mountains','⛰️ Гори та вулкани'],['rural','🌾 Сільські пейзажі'],['seascape','🌊 Морські пейзажі'],['beach','🏖️ Пляжний відпочинок'],['animals','🦜 Тварини та зоопарки'],['whales','🐋 Кити й дельфіни'],['waterparks','💦 Аквапарки'],['rides','🎢 Атракціони'],['cable','🚠 Канатні дороги'],['museums','🏛️ Музеї та історія'],['towns','🏘️ Атмосферні міста й села'],['food','🍽️ Гастрономія'],['quiet','🌿 Тихий відпочинок'],['active','🥾 Активний відпочинок'],['walking','🚶 Прогулянки та походи'],['boat','⛵ Морські екскурсії']];
