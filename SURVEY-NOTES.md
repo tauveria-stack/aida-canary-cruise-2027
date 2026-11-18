@@ -53,3 +53,7 @@ The survey no longer initializes profile state or calls Supabase before the shar
 ## Publication audit — 2026-11-18
 
 The public GitHub Pages URL currently shows the legacy personal-invitation page from `main`. The audit branch contains the new four-profile shared-code survey. An attempted update of only `main/family.html` was blocked by the tool security system and **did not publish**. The local execution environment could not resolve the Supabase host; this is inconclusive about production service health. No successful end-to-end read/write test has been completed. Do not tell family members that the new version is live. Next action: arrange a permitted publication route for this one file and test on a real browser before accepting the rollout.
+
+## Publication verified — 2026-11-18
+
+The user committed only `family.html` to `main` at `3aef7be750d5ccb9bb88a0d319b79065e6942ec8`. The new main file matches the audit branch content (blob SHA `c0cc122a693e65fb5aaf1266fa5608ba591aec4f`). GitHub Pages build/deployment run `44323271441` completed successfully at **2026-11-18 14:21:50 UTC**. A screenshot of the old invitation screen was captured before that completion; it does not establish a deployment failure. The shared-code UI is now in the published build according to GitHub Actions. Live browser rendering and Supabase persistence still need independent verification. Do not send the user through more manual GitHub steps. The user explicitly expects the assistant to handle technical work and ask only for irreducible acceptance checks.
