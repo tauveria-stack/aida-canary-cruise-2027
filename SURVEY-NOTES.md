@@ -45,3 +45,7 @@ compared by profile when the family chooses to analyze them.
 ## Shared access screen — 2026-11-18
 
 The family survey now has a shared four-digit entry code, checked only in the browser. A successful entry is remembered for the current tab through sessionStorage. This is a convenience gate, NOT server-side authentication: the JavaScript and public Supabase RPCs remain accessible. Do not store confidential data. Four participant profiles and the existing synchronization workflow remain unchanged. The change is committed only to the audit branch, not production. Before rollout, verify RPC availability, persistence after reload, and reading on another device. Family acceptance requires a working link and successful repeat access. If short iterations fail, reconsider integration into the main website.
+
+## Gate initialization fix — 2026-11-18
+
+The survey no longer initializes profile state or calls Supabase before the shared code gate is passed. On successful entry, it initializes once and then loads the last selected profile if any. This is a UX improvement, not an access-control boundary. Commit: `773393241fde433424f42d9d7499726bf5581e0f`. Live RPC read/write and cross-device persistence remain unverified; do not claim a working deployment.
