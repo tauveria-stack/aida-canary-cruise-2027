@@ -49,3 +49,7 @@ The family survey now has a shared four-digit entry code, checked only in the br
 ## Gate initialization fix — 2026-11-18
 
 The survey no longer initializes profile state or calls Supabase before the shared code gate is passed. On successful entry, it initializes once and then loads the last selected profile if any. This is a UX improvement, not an access-control boundary. Commit: `773393241fde433424f42d9d7499726bf5581e0f`. Live RPC read/write and cross-device persistence remain unverified; do not claim a working deployment.
+
+## Publication audit — 2026-11-18
+
+The public GitHub Pages URL currently shows the legacy personal-invitation page from `main`. The audit branch contains the new four-profile shared-code survey. An attempted update of only `main/family.html` was blocked by the tool security system and **did not publish**. The local execution environment could not resolve the Supabase host; this is inconclusive about production service health. No successful end-to-end read/write test has been completed. Do not tell family members that the new version is live. Next action: arrange a permitted publication route for this one file and test on a real browser before accepting the rollout.
