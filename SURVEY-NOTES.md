@@ -57,3 +57,27 @@ The public GitHub Pages URL currently shows the legacy personal-invitation page 
 ## Publication verified — 2026-11-18
 
 The user committed only `family.html` to `main` at `3aef7be750d5ccb9bb88a0d319b79065e6942ec8`. The new main file matches the audit branch content (blob SHA `c0cc122a693e65fb5aaf1266fa5608ba591aec4f`). GitHub Pages build/deployment run `44323271441` completed successfully at **2026-11-18 14:21:50 UTC**. A screenshot of the old invitation screen was captured before that completion; it does not establish a deployment failure. The shared-code UI is now in the published build according to GitHub Actions. Live browser rendering and Supabase persistence still need independent verification. Do not send the user through more manual GitHub steps. The user explicitly expects the assistant to handle technical work and ask only for irreducible acceptance checks.
+
+## Family survey: visual decision context requested 2026-11-18
+
+Acceptance feedback: the Gran Canaria radio choices are not understandable without pictures, plain-language summaries and links, especially for a 10-year-old. The whale-watching question has the same issue. Precede voting controls with the decision context; do NOT alter vote keys or existing answers.
+
+**Gran Canaria, 2027-01-09:** both routes start at Vegueta (historic old town, Santa Ana cathedral). Recommend **Vegueta → Maspalomas Dunes** (golden dunes by the Atlantic, simpler road logistics); the family alternative is **Vegueta → Teror → Pico de las Nieves** (traditional wooden balconies and mountain viewpoint, longer winding drive and weather-dependent views). State what is gained/lost, link to Day 4 of the guide. Put the recommended dunes option first in both explanation and radio choices.
+
+**Tenerife, 2027-01-13 to 15:** whale watching is a proposed **2–3-hour** boat excursion, not a booking. Explain pilot whales and dolphins in the wild; sightings are not guaranteed; typical southwest ports include Puerto Colón; prefer licensed Blue Boat operators. Protect existing Loro Parque/Siam Park priorities and the 2027-01-15 18:30 flight.
+
+**Approved reference images (Wikimedia Commons; use file page + author/license attribution):**
+- Vegueta: `Catedral Santa Ana.jpg` (Alejandroclemente, CC BY-SA 3.0).
+- Teror: `Teror, Gran Canaria, house near the Basilica, with wooden balconies.jpg` (Gerda Arendt, CC BY-SA 4.0).
+- Pico: `Gran Canaria, view from Pico de Las Nieves towards Roque Nublo and Teide on Tenerife.jpg` (Tamara k, CC BY-SA 4.0).
+- Maspalomas: `Maspalomas Dunes at Gran Canaria.jpg` (Daria Schneider, CC BY-SA 4.0).
+- Pilot whale: `Globicephala macrorhynchus Tenerife 2012.jpg` (Cayambe, CC BY-SA 3.0).
+
+Useful official links:
+- https://www.grancanaria.com/turismo/serviciosmultimedia/audioguias/las-palmas-de-gran-canaria/ruta-vegueta/
+- https://www.grancanaria.com/turismo/en/nature/mirador-lookout-network/mirador-pozonieves/
+- https://www.grancanaria.com/turismo/en/10-reasons-to-return-to-gran-canaria/dunes-by-the-lighthouse/
+- https://www.webtenerife.com/que-hacer/naturaleza/avistamiento-cetaceos/
+- https://www.hellocanaryislands.com/cruise-excursions/tenerife/whale-and-dolphin-watching-excursion/
+
+**Implementation state:** drafted but NOT committed: GitHub content-update action was blocked while replacing `family.html`. The published survey remains unchanged. Do not claim the explanations are live or ask the user to manually edit GitHub; resume via a permitted publication capability. Keep images lazy-loaded and mobile-responsive.
