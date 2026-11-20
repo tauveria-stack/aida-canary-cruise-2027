@@ -90,7 +90,7 @@ textarea{width:100%;min-height:90px;border:1px solid #b8cbd4;border-radius:10px;
 </div>
 <div class="card hidden" id="load-error" role="alert"></div>
 <div id="survey-content" class="hidden">
-<section class="card"><h2>Мої туристичні інтереси</h2><p class="muted">Оціни всі 18 тем. Зміни зберігаються автоматично. Щоб основний сайт позначив анкету завершеною, також збережи відповіді на два запитання нижче — про Гран-Канарію та китів.</p><div id="interests"></div></section>
+<section class="card"><h2>Мої туристичні інтереси</h2><p class="muted">Оціни всі 18 тем. Зміни зберігаються автоматично. Щоб основний сайт позначив анкету завершеною, також обери відповіді на два запитання нижче — про Гран-Канарію та китів. Усе зберігається автоматично.</p><div id="interests"></div></section>
 <section class="card"><h2>Гран-Канарія · сімейна розвилка</h2><p class="muted">Це голосування для сімейного обговорення. Вибір не змінює затверджений маршрут.</p><div id="gran-votes"></div><label for="gran-comment"><strong>Чому цей варіант? Що для тебе важливо?</strong></label><textarea id="gran-comment" maxlength="1500" placeholder="Наприклад: хочу побачити панораму, але не люблю довгі переїзди"></textarea><button class="save-vote" id="save-gran" type="button">Зберегти голос і коментар</button><p class="status" id="gran-status" aria-live="polite"></p></section>
 <section class="card"><h2>🐋 Спостереження за китами</h2><p>Чи цікава така екскурсія на Тенерифе? Це пропозиція для обговорення, а не бронювання.</p><div id="whale-votes"></div><label for="whale-comment"><strong>Побажання або умови</strong></label><textarea id="whale-comment" maxlength="1500" placeholder="Наприклад: хочу поїхати, якщо це не створить ризику запізнитися на літак"></textarea><button class="save-vote" id="save-whale" type="button">Зберегти відповідь</button><p class="status" id="whale-status" aria-live="polite"></p></section>
 </div>
@@ -215,8 +215,8 @@ function profileStatus(p){
  if(p.error&&!p.loaded)return 'Не вдалося завантажити відповіді: '+p.error+'. Поки дані не завантажені, редагування вимкнене.';
  if(p.loading)return 'Оновлюю дані з Supabase; локальні зміни залишаються доступними.';
  if(p.dirty)return 'Зберігаю відповіді…';
- if(p.draftDirty)return 'Голос або коментар є локальною чернеткою. Натисніть кнопку збереження під запитанням.';
- if(p.loaded)return 'Відповіді синхронізовано. Зміна учасника не видаляє чернетки інших профілів.';
+ if(p.draftDirty)return 'Є локальна чернетка: коментар синхронізується після вибору варіанта.';
+ if(p.loaded)return '✓ Відповіді синхронізовано з сервером. Можна повернутися до путівника.';
  return 'Завантажую відповіді…';
 }
 function renderStatus(){
@@ -413,5 +413,6 @@ window.addEventListener('beforeunload',event=>{
 });
 </script>
 <script defer src="family-context.js?v=20261120"></script>
+<script defer src="family-usability.js?v=20261120a"></script>
 </body>
 </html>
