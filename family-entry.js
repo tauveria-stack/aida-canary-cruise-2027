@@ -30,14 +30,13 @@
  const top=document.createElement('a');top.className='family-toplink';top.href=ENTRY;top.textContent='♡ Сімейна анкета';
  header.append(top);
  const area=document.createElement('div');area.id='family-entry';area.setAttribute('aria-live','polite');tabs.after(area);
- const safe=document.createElement('span');
  function render(){
   const x=state();area.replaceChildren();
-  top.textContent=x.complete?'✓ Переглянути мою анкету':x.started?'♡ Продовжити анкету':'♡ Сімейна анкета';
+  top.textContent=x.complete?'↻ Пройти анкету ще раз':x.started?'♡ Продовжити анкету':'♡ Сімейна анкета';
   if(x.complete){
    const p=document.createElement('p');p.className='family-compact';
    p.append('Відповіді '+x.name+' збережені на цьому пристрої. ');
-   const link=document.createElement('a');link.href=ENTRY;link.textContent='Переглянути або змінити відповіді';
+   const link=document.createElement('a');link.href=ENTRY;link.textContent='Пройти знову або змінити відповіді';
    p.append(link);area.append(p);return;
   }
   const declined=read(localStorage,DECLINED);
