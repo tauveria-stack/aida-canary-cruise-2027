@@ -1,0 +1,31 @@
+name: Mobile layout QA
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'family.html'
+      - 'family-choices-guide.html'
+      - 'mobile-layout.css'
+      - 'mobile-tables.js'
+      - 'qa/mobile-layout.mjs'
+      - '.github/workflows/mobile-layout.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  responsive-layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test dependency
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Verify every itinerary section and auxiliary page
+        run: node qa/mobile-layout.mjs
