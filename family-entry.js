@@ -22,7 +22,20 @@
   const votes=d&&d.votes||{};
   const total=INTEREST_IDS.filter(id=>[0,1,2].includes(interests[id])).length;
   const voted=Object.keys(VALID).filter(id=>votes[id]&&VALID[id].includes(votes[id].choice)).length;
-  return {person,name:NAMES[person]||'',complete:!!(person&&total===INTEREST_IDS.length&&voted===2),started:!!(person&&(total||voted)),total,voted};
+  // Do not report questionnaire completion while a local change still awaits server confirmation.
+  const normalize = value => {
+   if(value===null||typeof value!=='object')return JSON.stringify(value);
+   if(Array.isArray(value))return '['+value.map(normalize).join(',')+']';
+   return '{'+Object.keys(value).sort().map(key=>JSON.stringify(key)+':'+normalize(value[key])).join(',')+'}';
+  };
+  const unsentComment = Object.keys(VALID).some(id=>{
+   const draft=p&&p.draftVotes&&p.draftVotes[id];
+   const saved=votes[id]||{choice:'',comment:''};
+   return Boolean(draft&&(draft.choice!==(saved.choice||'')||draft.comment!==(saved.comment||'')));
+  });
+  const serverConfirmed=Boolean(p&&p.loaded&&Number.isInteger(p.revision)&&p.revision>0&&
+    p.baseline&&normalize(p.data)===normalize(p.baseline)&&!unsentComment);
+  return {person,name:NAMES[person]||'',complete:!!(person&&serverConfirmed&&total===INTEREST_IDS.length&&voted===2),started:!!(person&&(total||voted)),total,voted};
  }
  const styles=document.createElement('style');
  styles.textContent='.family-toplink{display:inline-flex;align-items:center;border:1px solid #b9eded;border-radius:999px;padding:9px 14px;color:#fff;background:#ffffff20;text-decoration:none;font-weight:700;margin:12px 0 0}.family-toplink:hover{background:#ffffff35}.family-banner{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 18px;margin:14px 0;background:#fff;border:1px solid #cce3e5;border-radius:14px;box-shadow:0 2px 10px #123e560b}.family-banner h2{font-size:19px;margin:0 0 5px}.family-banner p{font-size:14px;color:#466171;margin:0;line-height:1.5}.family-actions{display:flex;gap:8px;flex-wrap:wrap}.family-actions a{display:inline-block;padding:11px 14px;background:#126d76;color:white;text-decoration:none;border-radius:10px;font-weight:700;white-space:nowrap}.family-actions button{padding:10px 12px;background:white;border:1px solid #bed0d8;border-radius:10px;color:#17324a;cursor:pointer}.family-compact{margin:12px 0;font-size:14px;color:#466171}.family-compact a{font-weight:650}@media(max-width:650px){.family-banner{align-items:stretch;flex-direction:column}.family-actions{width:100%}.family-actions a{flex:1;text-align:center}}';
