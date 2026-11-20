@@ -160,6 +160,14 @@
     }
     renderStatus();
   });
+  // Keep the original top navigation link, but give it the same safe-save behavior.
+  const topGuideLink = document.querySelector('header a[href="index.html"]');
+  if (topGuideLink) topGuideLink.addEventListener('click', event => {
+    const p = current();
+    if (!p || synced(p)) return;
+    event.preventDefault();
+    returnButton.click();
+  });
   retryButton.addEventListener('click', () => {
     const p=current();
     if (!p || p.blockedConflict) return;
