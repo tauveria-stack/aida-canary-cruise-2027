@@ -32,7 +32,8 @@ try {
   const scan=async(label)=>{
     return await page.evaluate(()=>{
       const width=document.documentElement.clientWidth;
-      const candidates=[...document.querySelectorAll('header,main,.shell,#content,.panel.active,.panel.active *,nav#tabs,footer')];
+      const root=document.querySelector('.panel.active')||document.querySelector('#survey-app:not(.hidden)')||document.querySelector('#access-gate:not(.hidden)')||document.body;
+      const candidates=[document.body,...document.querySelectorAll('header,header *,nav#tabs,nav#tabs *,footer,footer *'),root,...root.querySelectorAll('*')];
       const failures=[];
       for(const el of candidates){
         if(!(el instanceof HTMLElement))continue;
