@@ -78,7 +78,8 @@
     returnButton.textContent = leaving ? 'Повертаємося…' :
       (p.dirty || p.saving || p.draftDirty ? 'Зберегти й повернутися до путівника' : 'Повернутися до путівника');
     returnButton.disabled = leaving || (returnRequested && p.saving);
-    retryButton.classList.toggle('visible',Boolean(p.error || p.offline));
+    retryButton.classList.toggle('visible',Boolean(p.error || p.offline || p.blockedConflict));
+    retryButton.textContent = p.blockedConflict ? 'Підтвердити мою версію й зберегти' : 'Повторити збереження';
     if (returnRequested && requestedPerson === activePerson) {
       if (synced(p)) {
         returnRequested = false;
@@ -170,7 +171,7 @@
   });
   retryButton.addEventListener('click', () => {
     const p=current();
-    if (!p || p.blockedConflict) return;
+    if (!p) return;
     retryCurrent();
   });
   document.addEventListener('visibilitychange', () => {
