@@ -72,13 +72,29 @@ try {
   if(ratio<4.5)errors.push('Header pill contrast below WCAG AA: '+ratio.toFixed(2));
   for(const file of ['family.html','family-choices-guide.html']){
     await page.goto(url+'/'+file,{waitUntil:'domcontentloaded'});
-    for(const width of widths.filter(x=>x<=768)){
+    const widthsToCheck=file==='family-choices-guide.html'?widths:widths.filter(x=>x<=768);
+    for(const width of widthsToCheck){
       await page.setViewportSize({width,height:844});
       const result=await scan(file);
       if(result.failures.length||result.scrollWidth>width+2)errors.push(JSON.stringify({page:file,viewport:width,...result}));
     }
+    if(file==='family.html'){
+      // Exercise the long post-login questionnaire without contacting Supabase.
+      // Reuse its real markup, sourced photos and form styling.
+      await page.evaluate(()=>{
+        document.getElementById('access-gate')?.classList.add('hidden');
+        document.getElementById('survey-app')?.classList.remove('hidden');
+        document.getElementById('profile-view')?.classList.remove('hidden');
+        document.getElementById('survey-content')?.classList.remove('hidden');
+      });
+      for(const width of widths.filter(x=>x<=768)){
+        await page.setViewportSize({width,height:844});
+        const result=await scan('family.html (full form)');
+        if(result.failures.length||result.scrollWidth>width+2)errors.push(JSON.stringify({page:'family.html (full form)',viewport:width,...result}));
+      }
+    }
   }
-  console.log('Mobile QA: '+ids.length+' itinerary tabs × '+widths.length+' widths + 2 auxiliary pages; pill contrast '+ratio.toFixed(2)+':1');
+  console.log('Mobile QA: '+ids.length+' itinerary tabs × '+widths.length+' widths + both family survey states + photo guide; pill contrast '+ratio.toFixed(2)+':1');
   if(errors.length)throw new Error(errors.slice(0,20).join('\n')+'\nTotal failures: '+errors.length);
   console.log('PASS: no horizontal page overflow in evaluated views');
 } finally {
