@@ -37,7 +37,7 @@
   function draftMismatch(p, id) {
     const draft = p.draftVotes[id];
     const saved = p.data.votes[id] || {choice:'',comment:''};
-    return draft.choice !== saved.choice || draft.comment.trim() !== saved.comment;
+    return draft.choice !== saved.choice || draft.comment !== saved.comment;
   }
   function statusForVote(id,p) {
     if (!p.loaded) return 'Завантажуємо відповіді…';
@@ -147,6 +147,19 @@
     const p = current();
     if (!p) {window.location.assign(url);return;}
     if (p.blockedConflict) {paintStatus();card.scrollIntoView({block:'nearest'});return;}
+    // Whitespace-only text with no selected answer is not a meaningful draft.
+    // Clear it so the safe-return button cannot wait on an impossible server write.
+    let clearedEmptyDraft = false;
+    for (const id of ids) {
+      if (!CHOICES[id].has(p.draftVotes[id].choice) &&
+          p.draftVotes[id].comment && !p.draftVotes[id].comment.trim()) {
+        p.draftVotes[id].comment = '';
+        const field = document.getElementById(id + '-comment');
+        if (field) field.value = '';
+        clearedEmptyDraft = true;
+      }
+    }
+    if (clearedEmptyDraft) { updateDirty(p); persist(); }
     // A comment without a selected vote is intentionally only a draft.
     if (p.draftDirty && ids.some(id => !CHOICES[id].has(p.draftVotes[id].choice) && p.draftVotes[id].comment.trim())) {
       paintStatus();return;
