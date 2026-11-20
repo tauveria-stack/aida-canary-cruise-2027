@@ -67,3 +67,6 @@ button,textarea,input,select{max-width:100%}
   .fd-gallery{grid-template-columns:minmax(0,1fr)}
   .cruise-table:not(.schedule-table) td{grid-template-columns:minmax(0,37%) minmax(0,1fr);gap:8px}
 }
+
+/* Keep the standalone photo guide readable on large monitors. */
+body.choices-page{width:100%;max-width:950px;margin:0 auto}
