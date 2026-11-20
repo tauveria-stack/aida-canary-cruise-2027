@@ -1,0 +1,69 @@
+/* AIDAcosma responsive layout contract — 2026-11-20.
+   Applies to the guide, family survey and photo explanation page.
+   Horizontal scrolling is permitted inside a deliberately scrollable strip,
+   never for the document itself. */
+:root{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-kerning:normal}
+*,*::before,*::after{box-sizing:border-box}
+html,body{width:100%;max-width:100%;min-width:0}
+body{overflow-x:clip}
+header,main,.shell,#content,.panel,.card,section,article{max-width:100%;min-width:0}
+header h1{line-height:1.17;letter-spacing:-.012em;overflow-wrap:break-word}
+header .pill{background:#e5f4f1!important;color:#173e4d!important;font-weight:700;line-height:1.35}
+header p{color:#fff;line-height:1.55}
+a,p,small,figcaption,td,th{overflow-wrap:break-word}
+img,video,iframe,svg{max-width:100%}
+img{height:auto}
+.hero,.fd-gallery img,.sea-visual img,.nav-mini-btn img{height:revert-layer}
+.hero{height:clamp(190px,32vw,350px)}
+.fd-gallery img{height:190px}
+.sea-visual img{height:192px}
+.nav-jump .nav-mini-btn img{height:19px}
+nav#tabs{max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scrollbar-width:thin}
+nav#tabs button{flex:0 0 auto}
+.daygrid,.cols,.fd-gallery,.fd-compare,.nav-jump-list,.sea-quickgrid,.sea-visuals,.people-grid,.context-grid,.choice-grid{min-width:0;max-width:100%}
+.daygrid a,.fd-gallery figure,.sea-visual,.nav-jump,.fd-compare section{min-width:0;max-width:100%}
+.card>div[style*="overflow-x:auto"],.card>div[style*="overflow-x: auto"]{max-width:100%;min-width:0;overscroll-behavior-x:contain}
+.cruise-table{max-width:100%}
+button,textarea,input,select{max-width:100%}
+.muted,.daygrid a small,.fd-gallery figcaption{color:#52697b}
+
+/* At narrow sizes, ALL data tables become vertical information cards.
+   Script adds data-label from the table header; no 590px min-width remains. */
+@media(max-width:700px){
+  header{padding:26px 18px}
+  .shell{width:100%;max-width:100%;padding:12px}
+  .card{width:100%;max-width:100%;min-width:0;padding:16px;margin:12px 0}
+  .daygrid,.cols{grid-template-columns:minmax(0,1fr)}
+  .fd-gallery,.sea-visuals{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fd-gallery img{height:142px}
+  .sea-visuals img{height:145px}
+  .sea-visuals-single{grid-template-columns:minmax(0,1fr)}
+  h2{font-size:clamp(22px,6vw,28px);line-height:1.24}
+  h3{line-height:1.32}
+  .schedule-wrap{width:100%;max-width:100%;min-width:0;overflow:visible!important}
+  .cruise-table.schedule-table{display:block;width:100%;max-width:100%;min-width:0!important;border:0;table-layout:fixed;background:transparent}
+  .schedule-table tbody{display:grid;grid-template-columns:minmax(0,1fr);width:100%;max-width:100%;min-width:0}
+  .schedule-table tr,.schedule-table td{display:block;width:100%;max-width:100%;min-width:0}
+  .schedule-table tr{overflow-wrap:anywhere}
+  .schedule-table td:nth-child(n+3){grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:8px}
+  .schedule-table td:nth-child(n+3)::before{min-width:0}
+  .cruise-table:not(.schedule-table){display:block;width:100%;max-width:100%;min-width:0!important;white-space:normal}
+  .cruise-table:not(.schedule-table) thead{display:none}
+  .cruise-table:not(.schedule-table) tbody{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;width:100%;max-width:100%}
+  .cruise-table:not(.schedule-table) tr{display:block;max-width:100%;min-width:0;padding:12px;border:1px solid #d7e4e8;border-radius:12px;background:#f8fbfc;box-shadow:0 2px 5px #17324a0a}
+  .cruise-table:not(.schedule-table) td,.cruise-table:not(.schedule-table) th[scope="row"]{width:100%;max-width:100%;min-width:0;border:0;padding:7px 0;white-space:normal;overflow-wrap:anywhere}
+  .cruise-table:not(.schedule-table) th[scope="row"]{display:block;font-size:16px;font-weight:750;color:#173c4d;border-bottom:1px solid #d7e4e8;padding-bottom:9px;margin-bottom:5px}
+  .cruise-table:not(.schedule-table) td{display:grid;grid-template-columns:minmax(0,38%) minmax(0,1fr);gap:10px;align-items:start;font-size:14px;line-height:1.5}
+  .cruise-table:not(.schedule-table) td::before{content:attr(data-label);color:#486778;font-size:12px;font-weight:700;line-height:1.4}
+  .cruise-table:not(.schedule-table) td:last-child{color:inherit;font-weight:inherit}
+  .cruise-table:not(.schedule-table) td a{overflow-wrap:anywhere}
+  .card>div[style*="overflow-x:auto"],.card>div[style*="overflow-x: auto"]{overflow-x:visible!important}
+  .daygrid a{padding:13px}
+}
+@media(max-width:420px){
+  header{padding:24px 16px}
+  .shell{padding:10px}
+  .card{padding:13px}
+  .fd-gallery{grid-template-columns:minmax(0,1fr)}
+  .cruise-table:not(.schedule-table) td{grid-template-columns:minmax(0,37%) minmax(0,1fr);gap:8px}
+}
