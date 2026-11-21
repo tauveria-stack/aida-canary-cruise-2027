@@ -15,9 +15,9 @@ const outbound={
  full:map('Warsaw Modlin Airport WMI, Nowy Dwor Mazowiecki, Poland','Obolon, Kyiv, Ukraine','Ustyluh border crossing, Ukraine|Zosin border crossing, Poland|Lublin, Poland')
 };
 const home={
- id:'road-home',tab:'🚗 Додому · 16–17.01',title:'Дорога додому · 16–17 січня',
- intro:'Після прильоту та відпочинку у Варшаві — Люблін, Зосін–Устилуг, Київ.',
- schedule:[['01:05 CET','WMI: приліт 16 січня, багаж, забрати Renault із паркінгу.'],['02:00–03:00 CET','Заїзд Szyszkowa 39 на ніч 15→16.01, відпочинок.'],['10:30–12:00 CET','Після сну й сніданку виїзд із Варшави, час попередній.'],['13:30–15:00 CET','Люблін: обід 35–45 хв, пальне й санвузол.'],['Після обіду','Зосін–Устилуг: перевірити чергу легкових PL→UA.'],['16–17.01 EET','Луцьк → Рівне → Звягель → Київ, можлива ніч/ранок 17.01, з відпочинком.']],
+ id:'road-home',tab:'🚗 Додому · 16.01',title:'Дорога додому · 16 січня',
+ intro:'16 січня: приліт уночі, відпочинок у Варшаві, виїзд вранці та ціль прибути до Києва пізно ввечері того самого дня.',
+ schedule:[['01:05 CET','WMI: приліт 16 січня, багаж, забрати Renault із паркінгу.'],['02:00–03:00 CET','Заїзд Szyszkowa 39 на ніч 15→16.01, відпочинок.'],['≈09:00–10:00 CET','Ранковий виїзд із Варшави після достатнього відпочинку та сніданку. Це орієнтир для повернення 16-го, не підтверджений час.'],['≈12:00–13:30 CET','Люблін: обід 35–45 хв, пальне й санвузол. Орієнтир залежить від старту та трафіку.'],['Після Любліна','Зосін–Устилуг: перевірити чергу легкових PL→UA, врахувати два контролі та зміну часових поясів.'],['Пізній вечір 16.01 EET · ціль','Устилуг → Луцьк → Рівне → Звягель → Київ. Прибуття додому плануємо саме 16 січня; це залежить від черги, зимової дороги та відпочинку водіїв.']],
  stops:[['Szyszkowa 39 · Варшава','Szyszkowa 39, 02-285 Warszawa, Poland','Після ночівлі'],['Люблін','Lublin, Poland','Гарячий обід до кордону'],['Зосін · PL→UA','Zosin border crossing, Poland','Польська черга легкових'],['Устилуг','Ustyluh border crossing, Ukraine','Українська сторона'],['Луцьк','Lutsk, Ukraine','Перерва/зміна водія'],['Київ, Оболонь','Obolon, Kyiv, Ukraine','Домашню адресу не публікуємо']],
  full:map('Obolon, Kyiv, Ukraine','Szyszkowa 39, Warszawa, Poland','Lublin, Poland|Zosin border crossing, Poland|Ustyluh border crossing, Ukraine')
 };
@@ -40,7 +40,7 @@ function page(data){
  places.append(nav);panel.append(places);
  const extras=data.id==='road-out'?
  'Страхування: «Зелена картка» для Megane III на 05–19.01 (15 днів), купувати заздалегідь; медичний поліс Європа для 4 людей 05–17.01, від €50 000/особу, включно з репатріацією та активними розвагами. Паркінг Modlin 05–16.01: P1/P3 асфальтовані, P6 трав’яний, P7 тимчасово недоступний. Пільга І групи: ст.23 Закону про прикордонний контроль (супровідні особи та за необхідності родичі першої лінії), але не гарантована нульова черга. Звірити документи кожного з чотирьох.' :
- 'Після рейсу 16 січня о 01:05 спочатку забираємо Megane з WMI, потім ночуємо на Szyszkowa 39. Медичний поліс повинен діяти до фактичного прибуття в Україну 17.01. Зворотна черга PL→UA відрізняється від виїзної.';
+ 'Після рейсу 16 січня о 01:05 забираємо Megane з WMI, їдемо на Szyszkowa 39, відпочиваємо й того ж ранку вирушаємо до Києва. Ціль — пізній вечір 16.01. Кордон може затримати нас, але 17.01 не є запланованим дорожнім днем. Медичне покриття до 17.01 залишається лише страховим запасом; зворотна черга PL→UA може відрізнятися.';
  const policy=box('Контроль перед дорогою',extras);const actions=el('div','fd-actions');
  if(data.id==='road-out'){actions.append(link('https://modlinairport.apcoa.pl/','Паркінги Modlin'),link('https://mtsbu.ua/index.php/greencard/elektronnij-dogovir','МТСБУ · Зелена картка'),link('https://nakordoni.eu/en/stat/1/2/4','Черги UA→PL'))}
  else {actions.append(link('https://granica.gov.pl/index_wait.php?p=u&v=pl','Польські черги'),link('https://nakordoni.eu/en/stat/2/1/4','Черги PL→UA'))}
@@ -50,9 +50,9 @@ function page(data){
 page(outbound);page(home);
 const homepage=document.getElementById('panel-overview');
 if(homepage){
- const prompt=box('🚗 Наземні маршрути','5 січня — прямо з Києва до Модліна, без готелю. 16 січня — після нічного прильоту відпочинок у Варшаві, а потім додому. Обидва маршрути без платних доріг.');
+ const prompt=box('🚗 Наземні маршрути','5 січня — прямо з Києва до Модліна, без готелю. 16 січня — приліт уночі, відпочинок у Варшаві, ранковий виїзд і ціль бути в Києві пізно ввечері того ж дня. Обидва маршрути без платних доріг.');
  const links=el('p','');const out=el('a','','До Модліна · 05.01');out.href='#road-out';out.onclick=e=>{e.preventDefault();show('road-out')};
- const back=el('a','','Додому · 16–17.01');back.href='#road-home';back.onclick=e=>{e.preventDefault();show('road-home')};
+ const back=el('a','','Додому · 16.01');back.href='#road-home';back.onclick=e=>{e.preventDefault();show('road-home')};
  links.append(out,document.createTextNode(' · '),back);prompt.append(links);
  homepage.insertBefore(prompt,homepage.firstElementChild?.nextSibling||null);
 }
