@@ -7,6 +7,8 @@ on:
       - 'family-choices-guide.html'
       - 'mobile-layout.css'
       - 'mobile-tables.js'
+      - 'contact-actions.css'
+      - 'contact-ui.js'
       - 'qa/mobile-layout.mjs'
       - '.github/workflows/mobile-layout.yml'
   workflow_dispatch:
