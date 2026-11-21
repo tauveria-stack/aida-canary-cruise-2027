@@ -103,6 +103,10 @@ try {
     if(contacts)contacts.style.display=oldContactDisplay;
     return {mapLinks:maps.length,stops:stops.length,contactChips:chips.length,byDay:seenPages,issues};
   });
+  // Regression floor: adding stops is fine; silent loss of published routes or contacts is not.
+  if(navigation.stops<46)errors.push('Navigation coverage regression: expected at least 46 waypoint pairs, got '+navigation.stops);
+  if(navigation.mapLinks<130)errors.push('Navigation coverage regression: expected at least 130 map links, got '+navigation.mapLinks);
+  if(navigation.contactChips<14)errors.push('Contact coverage regression: expected at least 14 channel buttons, got '+navigation.contactChips);
   console.log('Navigation QA: '+navigation.mapLinks+' Google/Waze links in '+navigation.stops+' stops; contact chips: '+navigation.contactChips);
   if(navigation.issues.length)errors.push(...navigation.issues.map(t=>'NAV: '+t));
   for(const width of widths){
