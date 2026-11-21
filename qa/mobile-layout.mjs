@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const base=process.cwd();
-const files=new Set(['index.html','family.html','family-choices-guide.html','mobile-layout.css','mobile-tables.js','contact-actions.css','contact-ui.js','family-entry.js','family-context.js','family-usability.js']);
+const files=new Set(['index.html','family.html','family-choices-guide.html','mobile-layout.css','mobile-tables.js','contact-actions.css','contact-ui.js','road-legs.js','family-entry.js','family-context.js','family-usability.js']);
 const types={'.html':'text/html;charset=utf-8','.css':'text/css;charset=utf-8','.js':'application/javascript;charset=utf-8'};
 const server=createServer(async(req,res)=>{
   const file=decodeURIComponent((req.url||'/').split('?')[0]).replace(/^\//,'')||'index.html';
@@ -27,7 +27,7 @@ try {
   });
   await page.goto(url+'/',{waitUntil:'domcontentloaded'});
   const tabs=await page.locator('#tabs button').count();
-  if(tabs!==13)errors.push('Expected 13 itinerary sections, got '+tabs);
+  if(tabs!==15)errors.push('Expected 15 itinerary sections (11 days + 2 road legs + home + contacts), got '+tabs);
   const ids=await page.locator('#tabs button').evaluateAll(nodes=>nodes.map(n=>n.id.replace(/^tab-/,'')));
   const scan=async(label)=>{
     return await page.evaluate(()=>{
@@ -104,8 +104,8 @@ try {
     return {mapLinks:maps.length,stops:stops.length,contactChips:chips.length,byDay:seenPages,issues};
   });
   // Regression floor: adding stops is fine; silent loss of published routes or contacts is not.
-  if(navigation.stops<46)errors.push('Navigation coverage regression: expected at least 46 waypoint pairs, got '+navigation.stops);
-  if(navigation.mapLinks<130)errors.push('Navigation coverage regression: expected at least 130 map links, got '+navigation.mapLinks);
+  if(navigation.stops<58)errors.push('Navigation coverage regression: expected at least 58 waypoint pairs including road legs, got '+navigation.stops);
+  if(navigation.mapLinks<154)errors.push('Navigation coverage regression: expected at least 154 map links, got '+navigation.mapLinks);
   if(navigation.contactChips<14)errors.push('Contact coverage regression: expected at least 14 channel buttons, got '+navigation.contactChips);
   console.log('Navigation QA: '+navigation.mapLinks+' Google/Waze links in '+navigation.stops+' stops; contact chips: '+navigation.contactChips);
   if(navigation.issues.length)errors.push(...navigation.issues.map(t=>'NAV: '+t));
