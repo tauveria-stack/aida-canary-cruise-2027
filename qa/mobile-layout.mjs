@@ -52,6 +52,18 @@ try {
       return {width,scrollWidth:document.documentElement.scrollWidth,failures};
     });
   };
+  // AIDA restaurant reservations must remain visible on both the overview and the matching cruise day.
+  const dining=await page.evaluate(()=>{
+    const overview=document.getElementById('panel-overview')?.textContent||'';
+    const fuerte=document.getElementById('panel-fuerteventura')?.textContent||'';
+    const issues=[];
+    if(!overview.includes('Ristorante Mamma Mia')||!overview.includes('07.01.2027 · 20:30'))issues.push('Mamma Mia booking missing from home overview');
+    if(!fuerte.includes('Ristorante Mamma Mia')||!fuerte.includes('20:30'))issues.push('Mamma Mia booking missing from 7 Jan page');
+    if(!fuerte.includes('Варіант А')||!fuerte.includes('Варіант Б'))issues.push('Onboard/shore dinner alternatives missing from 7 Jan page');
+    if(!fuerte.includes('19:30')||!fuerte.includes('21:00'))issues.push('Fuerteventura return-to-ship or departure time missing');
+    return issues;
+  });
+  if(dining.length)errors.push(...dining.map(i=>'DINING: '+i));
   // Family-facing copy: plain-language Kyiv time, not developer timezones or URL options.
   const roadCopy=await page.evaluate(()=>{
     const issues=[];
