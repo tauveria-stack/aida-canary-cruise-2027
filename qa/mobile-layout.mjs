@@ -56,11 +56,16 @@ try {
   const dining=await page.evaluate(()=>{
     const overview=document.getElementById('panel-overview')?.textContent||'';
     const fuerte=document.getElementById('panel-fuerteventura')?.textContent||'';
+    const madeira=document.getElementById('panel-madeira')?.textContent||'';
     const issues=[];
     if(!overview.includes('Ristorante Mamma Mia')||!overview.includes('07.01.2027 · 20:30'))issues.push('Mamma Mia booking missing from home overview');
     if(!fuerte.includes('Ristorante Mamma Mia')||!fuerte.includes('20:30'))issues.push('Mamma Mia booking missing from 7 Jan page');
     if(!fuerte.includes('Варіант А')||!fuerte.includes('Варіант Б'))issues.push('Onboard/shore dinner alternatives missing from 7 Jan page');
     if(!fuerte.includes('19:30')||!fuerte.includes('21:00'))issues.push('Fuerteventura return-to-ship or departure time missing');
+    if(!overview.includes('French Kiss')||!overview.includes('11.01.2027 · 20:30'))issues.push('French Kiss booking missing from home overview');
+    if(!madeira.includes('French Kiss')||!madeira.includes('20:30'))issues.push('French Kiss booking missing from 11 Jan Madeira page');
+    if(!madeira.includes('Варіант А')||!madeira.includes('Варіант Б'))issues.push('Onboard/shore dinner alternatives missing from Madeira page');
+    if(!madeira.includes('19:30')||!madeira.includes('21:30')||!madeira.includes('23:00'))issues.push('Madeira dinner/port safety times missing');
     return issues;
   });
   if(dining.length)errors.push(...dining.map(i=>'DINING: '+i));
