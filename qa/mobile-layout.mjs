@@ -85,6 +85,24 @@ try {
       const gButton=stop.querySelector('.nav-maps'),wButton=stop.querySelector('.nav-waze');
       if(!gButton||!wButton)issues.push(pageName+' / '+title+': missing recognizable map navigation buttons');
     }
+    // User requirement: every driving map button on the new Poland road tabs avoids tolls.
+    for(const roadId of ['road-out','road-home']){
+      const panel=document.getElementById('panel-'+roadId);
+      if(!panel){issues.push('Missing '+roadId+' panel');continue}
+      const segment=panel.querySelectorAll('.nav-jump');
+      if(segment.length<6)issues.push(roadId+': expected six mapped stops, got '+segment.length);
+      for(const stop of segment){
+        const label=stop.querySelector('.nav-jump-title')?.textContent?.trim()||'unnamed';
+        const googleLink=stop.querySelector('a.nav-maps');
+        const wazeLink=stop.querySelector('a.nav-waze');
+        if(!googleLink||!wazeLink){issues.push(roadId+'/'+label+': missing maps/Waze');continue}
+        const gu=new URL(googleLink.href),wu=new URL(wazeLink.href);
+        if(!String(gu.searchParams.get('avoid')||'').split(',').includes('tolls'))issues.push(roadId+'/'+label+': Google may use toll road');
+        if(wu.searchParams.get('avoid_tolls')!=='true')issues.push(roadId+'/'+label+': Waze may use toll road');
+      }
+      const full=panel.querySelector('.fd-actions a[href*="google.com/maps/dir"]');
+      if(!full||!String(new URL(full.href).searchParams.get('avoid')||'').includes('tolls'))issues.push(roadId+': full route does not avoid tolls');
+    }
     const contacts=document.querySelector('#panel-contacts');
     // Hidden tabs have zero geometry; temporarily expose contacts for touch-target measurement.
     const oldContactDisplay=contacts?.style.display||'';
