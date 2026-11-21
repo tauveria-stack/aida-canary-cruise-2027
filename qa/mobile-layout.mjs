@@ -86,6 +86,9 @@ try {
       if(!gButton||!wButton)issues.push(pageName+' / '+title+': missing recognizable map navigation buttons');
     }
     const contacts=document.querySelector('#panel-contacts');
+    // Hidden tabs have zero geometry; temporarily expose contacts for touch-target measurement.
+    const oldContactDisplay=contacts?.style.display||'';
+    if(contacts)contacts.style.display='block';
     const chips=[...(contacts?.querySelectorAll('.contact-link')||[])];
     const providers=['fb','wa','site','mail'];
     if(chips.length<10)issues.push('Contact page: too few branded action chips ('+chips.length+')');
@@ -97,6 +100,7 @@ try {
         if(a.querySelector('.contact-icon.fb')&&!u.hostname.endsWith('facebook.com'))issues.push('Facebook badge links elsewhere: '+a.href);
       }catch(_){issues.push('Invalid contact URL: '+a.getAttribute('href'))}
     }
+    if(contacts)contacts.style.display=oldContactDisplay;
     return {mapLinks:maps.length,stops:stops.length,contactChips:chips.length,byDay:seenPages,issues};
   });
   console.log('Navigation QA: '+navigation.mapLinks+' Google/Waze links in '+navigation.stops+' stops; contact chips: '+navigation.contactChips);
