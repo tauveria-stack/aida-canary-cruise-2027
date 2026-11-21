@@ -9,6 +9,7 @@ on:
       - 'mobile-tables.js'
       - 'contact-actions.css'
       - 'contact-ui.js'
+      - 'road-legs.js'
       - 'qa/mobile-layout.mjs'
       - '.github/workflows/mobile-layout.yml'
   workflow_dispatch:
