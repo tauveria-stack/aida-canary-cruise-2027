@@ -60,7 +60,7 @@ try {
       if(!panel){issues.push(id+': missing road page');continue}
       const t=panel.textContent||'';
       if(/\b(?:EET|CET)\b|avoid=tolls|avoid_tolls=true|PL→UA|UA→PL|check-in/i.test(t))issues.push(id+': technical jargon leaked into user text');
-      if(!t.includes('УСІ години в графіку — за київським часом'))issues.push(id+': no Kyiv time explanation');
+      if(!t.includes('Усі години нижче — за Києвом'))issues.push(id+': no Kyiv time explanation');
       if(!t.includes('План дороги · час Києва'))issues.push(id+': schedule has no Kyiv time heading');
       const maps=[...panel.querySelectorAll('a[href]')].filter(a=>a.href.includes('google.com/maps/dir'));
       const waze=[...panel.querySelectorAll('a[href]')].filter(a=>a.href.includes('waze.com/ul'));
