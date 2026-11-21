@@ -41,8 +41,8 @@ function page(data){
  (document.getElementById(data.id==='road-out'?'tab-overview':'tab-warsaw16')).after(btn);
  const panel=el('section','panel');panel.id='panel-'+data.id;
  panel.append(el('h2','',data.title),el('p','muted',data.intro));
- const intro=box('Без платних доріг · Renault Megane III','Посилання на Google Maps і Waze налаштовані так, щоб уникати платних доріг. Безплатними швидкісними трасами користуємося. Орієнтир: 11–12 годин їзди, додатково 1–1,5 години на зупинки та окремий запас часу на кордоні.');
- const timeNote=el('p','road-clock-note','🕒 УСІ години в графіку — за київським часом. У Польщі на годиннику на 1 годину менше. Час у квитках пояснюємо окремо.');
+ const intro=box('Без платних доріг · Renault Megane III','У Google Maps маршрут прокладено без платних доріг. У налаштуваннях Waze також увімкни «Уникати платних доріг». Безплатні швидкісні траси залишаємо. Орієнтир: 11–12 годин у русі, ще 1–1,5 години на перерви та окремий запас на кордон.');
+ const timeNote=el('p','road-clock-note','🕒 Усі години нижче — за Києвом. У Польщі на годину менше: 10:00 у Києві = 09:00 у Варшаві.');
  intro.append(timeNote);
  const whole=el('div','fd-actions');whole.append(link(data.full,'🗺️ Повний маршрут Google Maps · без платних доріг'));intro.append(whole);panel.append(intro);
  const times=box('План дороги · час Києва');const timeline=el('div','fd-timeline');
