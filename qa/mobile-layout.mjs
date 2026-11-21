@@ -52,6 +52,30 @@ try {
       return {width,scrollWidth:document.documentElement.scrollWidth,failures};
     });
   };
+  // Family-facing copy: plain-language Kyiv time, not developer timezones or URL options.
+  const roadCopy=await page.evaluate(()=>{
+    const issues=[];
+    for(const id of ['road-out','road-home']){
+      const panel=document.getElementById('panel-'+id);
+      if(!panel){issues.push(id+': missing road page');continue}
+      const t=panel.textContent||'';
+      if(/\b(?:EET|CET)\b|avoid=tolls|avoid_tolls=true|PL→UA|UA→PL|check-in/i.test(t))issues.push(id+': technical jargon leaked into user text');
+      if(!t.includes('УСІ години в графіку — за київським часом'))issues.push(id+': no Kyiv time explanation');
+      if(!t.includes('План дороги · час Києва'))issues.push(id+': schedule has no Kyiv time heading');
+      const maps=[...panel.querySelectorAll('a[href]')].filter(a=>a.href.includes('google.com/maps/dir'));
+      const waze=[...panel.querySelectorAll('a[href]')].filter(a=>a.href.includes('waze.com/ul'));
+      if(!maps.every(a=>new URL(a.href).searchParams.get('avoid')==='tolls'))issues.push(id+': toll avoidance missing in Google Maps');
+      if(!waze.every(a=>new URL(a.href).searchParams.get('avoid_tolls')==='true'))issues.push(id+': toll avoidance missing in Waze');
+    }
+    const out=document.getElementById('panel-road-out')?.textContent||'';
+    const home=document.getElementById('panel-road-home')?.textContent||'';
+    if(!out.includes('6 січня · 08:05')||!out.includes('07:05 за місцевим часом Варшави'))issues.push('Outbound Warsaw flight time not converted to Kyiv time');
+    if(!home.includes('16 січня · 02:05')||!home.includes('01:05 за часом Варшави'))issues.push('Inbound Warsaw flight time not converted to Kyiv time');
+    if(!home.includes('16 січня · 10:00–11:00'))issues.push('Warsaw morning departure not converted to Kyiv time');
+    if(home.includes('16–17.01')||home.includes('можлива ніч/ранок 17'))issues.push('Old two-day return plan still visible');
+    return issues;
+  });
+  if(roadCopy.length)errors.push(...roadCopy.map(t=>'COPY: '+t));
   // Full itinerary navigation audit: validate actual rendered Google Maps/Waze pairs.
   const navigation=await page.evaluate(()=>{
     const issues=[];
