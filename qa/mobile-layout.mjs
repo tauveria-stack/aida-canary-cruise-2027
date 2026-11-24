@@ -67,7 +67,7 @@ try {
     if(!madeira.includes('French Kiss')||!madeira.includes('20:30'))issues.push('French Kiss booking missing from 11 Jan Madeira page');
     if(!madeira.includes('Варіант А')||!madeira.includes('Варіант Б'))issues.push('Onboard/shore dinner alternatives missing from Madeira page');
     if(!madeira.includes('19:30')||!madeira.includes('21:30')||!madeira.includes('23:00'))issues.push('Madeira dinner/port safety times missing');
-    if(!overview.includes('TopCar ·')||!overview.includes('83,43 €')||!overview.includes('07.01.2027 · 10:00–19:00'))issues.push('Confirmed Fuerteventura rental missing from overview');
+    if(!overview.includes('TopCar підтверджено')||!overview.includes('83,43 €')||!overview.includes('07.01.2027 · 10:00–19:00'))issues.push('Confirmed Fuerteventura rental missing from overview');
     if(!fuerte.includes('TopCar · прокат підтверджено')||!fuerte.includes('83,43 €')||!fuerte.includes('Super Cover'))issues.push('Confirmed Fuerteventura rental missing from day page');
     if(fuerte.includes('CICAR')||fuerte.includes('Машину поки не заброньовано'))issues.push('Stale unbooked Fuerteventura rental text');
     if(!fuerte.includes('Área 5, módulo 6')||!fuerte.includes('19:00')||!fuerte.includes('19:30'))issues.push('Confirmed port pickup and return safeguards missing');
